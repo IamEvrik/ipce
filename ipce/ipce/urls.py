@@ -1,6 +1,5 @@
-"""
-URL configuration for ipce project.
-"""
+"""URL configuration for ipce project."""
+
 from django.contrib import admin
 from django.urls import path
 

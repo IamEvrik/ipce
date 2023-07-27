@@ -1,6 +1,4 @@
-"""
-WSGI config for ipce project.
-"""
+"""WSGI config for ipce project."""
 
 import os
 

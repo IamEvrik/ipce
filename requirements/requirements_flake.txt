@@ -2,6 +2,7 @@ flake8
 isort
 mypy
 pylint
+pyright
 flake8-builtins
 flake8-django
 flake8-docstrings

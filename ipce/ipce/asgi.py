@@ -1,6 +1,4 @@
-"""
-ASGI config for ipce project.
-"""
+"""ASGI config for ipce project."""
 
 import os
 
