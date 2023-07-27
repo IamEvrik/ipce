@@ -1,0 +1,67 @@
+@startuml
+
+class "Версия офиса" as OfficeVersion {
+	{field} *version_id : int
+	..
+	{field} *name : str
+}
+
+class "Ключ офиса" as OfficeKey {
+	{field} *key_id : int
+	..
+	{field} *office_version_id : int
+	{field} *key_text : str
+	{field} note : str
+}
+note Top of OfficeKey : Создать значение "Неизвестно" по умолчанию
+
+class "Версия ОС" as OSVersion {
+	{field} *version_id : int
+	..
+	{field} *name : str
+}
+
+class "Ключ ОС" as OSKey {
+	{field} *key_id : int
+	..
+	{field} *os_version_id : int
+	{field} *key_text : str
+	{field} note : str
+}
+note Top of OSKey : Создать значения "Неизвестно" и "Free"
+
+class "Подразделение" as Division {
+	{field} *division_id : int
+	..
+	{field} *name : str
+}
+
+class "Компьютер" as Computer {
+	{field} *computer_id : int
+	..
+	{field} *inventory_number : str
+	{field} *os_key_id : int
+	{field} *os_bit_depth : str
+	{field} *ram_capacity : int
+	{field} *has_ssd : bool
+	{field} office_key_id : int
+	{field} user : str
+	{field} *division_id : int
+	{field} *ip_address : str
+	{field} note : str
+}	
+
+class "История компьютера" as ComputerHistory {
+	{field} *change_date : date
+}
+		
+
+
+OfficeKey }-- OfficeVersion
+OSKey }-- OSVersion
+Computer -- OSKey
+Computer -- OfficeKey
+Computer }-- Division	
+ComputerHistory --|> Computer
+
+@enduml

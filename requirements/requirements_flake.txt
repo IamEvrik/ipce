@@ -1,0 +1,13 @@
+flake8
+isort
+mypy
+pylint
+flake8-builtins
+flake8-django
+flake8-docstrings
+flake8-isort
+flake8-mypy
+flake8-pylint
+flake8-quotes
+flake8-todos
+django-stubs
