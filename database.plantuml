@@ -36,17 +36,26 @@ class "Подразделение" as Division {
 	{field} *name : str
 }
 
+class "Рабочее место" as WorkPlace {
+	{field} *workplace_id : int
+	..
+	{field} *division_id : int
+	{field} *name : str
+	{field} *note : str
+} 
+
 class "Компьютер" as Computer {
 	{field} *computer_id : int
 	..
 	{field} *inventory_number : str
+	{field} *name : str
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
 	{field} *ram_capacity : int
 	{field} *has_ssd : bool
 	{field} office_key_id : int
+	{field} *workplace_id : int
 	{field} user : str
-	{field} *division_id : int
 	{field} *ip_address : str
 	{field} note : str
 }	
@@ -54,14 +63,14 @@ class "Компьютер" as Computer {
 class "История компьютера" as ComputerHistory {
 	{field} *change_date : date
 }
+
 		
-
-
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
+WorkPlace }-- Division	
 Computer -- OSKey
 Computer -- OfficeKey
-Computer }-- Division	
+Computer -- WorkPlace	
 ComputerHistory --|> Computer
 
 @enduml
