@@ -1,18 +1,20 @@
 """Валидаторы для приложения computers."""
 
+from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+KEY_FORMAT_REGEXP: str = r'[\d\w]{5}-[\d\w]{5}-[\d\w]{5}-[\d\w]{5}-[\d\w]{5}'
 
-def validate_office_key(value: str) -> None:
-    """Проверка ключа офиса."""
-    # TODO (evrik): сделать проверку ключа по шаблону
+validate_office_key = validators.RegexValidator(
+    regex=KEY_FORMAT_REGEXP,
+    message=_('invalid key format'),
+)
 
-
-def validate_os_key(value: str) -> None:
-    """Проверка кллюча ОС."""
-    # TODO (evrik): сделать проверку ключа по шаблону
-
+validate_os_key = validators.RegexValidator(
+    regex=KEY_FORMAT_REGEXP,
+    message=_('invalid key format'),
+)
 
 def validate_os_bit_depth(value: int) -> None:
     """Проверка разрядности ОС."""

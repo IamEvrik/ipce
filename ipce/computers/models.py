@@ -36,11 +36,17 @@ class OfficeKey(models.Model):
         max_length=40,
         validators=(validate_office_key,)
     )
-    note = models.TextField(_('note'))
+    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('office key')
         verbose_name_plural = _('office keys')
+        constraints = (
+            models.UniqueConstraint(
+                fields=('office_version', 'key_text'),
+                name='office_key_unique',
+            ),
+        )
 
     def __str__(self) -> str:
         """Строковое представление - версия и ключ."""
@@ -74,11 +80,17 @@ class OSKey(models.Model):
         max_length=40,
         validators=(validate_os_key,)
     )
-    note = models.TextField(_('note'))
+    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('OS key')
         verbose_name_plural = _('OS keys')
+        constraints = (
+            models.UniqueConstraint(
+                fields=('os_version', 'key_text'),
+                name='OS_key_unique',
+            ),
+        )
 
     def __str__(self) -> str:
         """Версия и ключ."""
@@ -111,7 +123,7 @@ class WorkPlace(models.Model):
         null=True,
     )
     name = models.CharField(_('name'), max_length=100)
-    note = models.TextField(_('note'))
+    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('work place')
@@ -125,8 +137,12 @@ class WorkPlace(models.Model):
 class Computer(models.Model):
     """Компьютер."""
 
-    inventory_number = models.CharField(_('inventory number'), max_length=10)
-    name = models.CharField(_('name'), max_length=20)
+    inventory_number = models.CharField(
+        _('inventory number'),
+        max_length=10,
+        blank=True,
+    )
+    name = models.CharField(_('name'), max_length=20, blank=True)
     os_key = models.ForeignKey(
         OSKey,
         on_delete=models.SET_NULL,
@@ -159,14 +175,14 @@ class Computer(models.Model):
         blank=True,
         null=True,
     )
-    user = models.CharField(_('user'), max_length=150)
+    user = models.CharField(_('user'), max_length=150, blank=True)
     ip_address = models.GenericIPAddressField(
         verbose_name=_('IP address'),
         protocol='IPv4',
         blank=True,
         null=True,
     )
-    note = models.TextField(_('note'))
+    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('computer')
@@ -174,5 +190,5 @@ class Computer(models.Model):
         default_related_name = 'computer'
 
     def __str__(self):
-        """IP адрес, название, подразделение."""
-        return f'{self.ip_address}, {self.name}, {self.division}'
+        """IP адрес, название, рабочее место."""
+        return f'{self.ip_address}, {self.name}, {self.work_place}'
