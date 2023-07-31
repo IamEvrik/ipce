@@ -123,8 +123,8 @@ class UserName(models.Model):
         verbose_name_plural = _('usernames')
 
     def __str__(self):
-        """Имя пользователя."""
-        return self.name
+        """Имя пользователя (ФИО)."""
+        return f'{self.name} ({self.fio})'
 
 
 class Responsible(models.Model):
@@ -162,13 +162,6 @@ class Computer(models.Model):
         verbose_name=_('responsible'),
         on_delete=models.RESTRICT,
     )
-    username = models.ForeignKey(
-        UserName,
-        verbose_name=_('username'),
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
     processor = models.CharField(_('processor'), max_length=100, blank=True)
     os_key = models.ForeignKey(
         OSKey,
@@ -197,7 +190,6 @@ class Computer(models.Model):
         blank=True,
         null=True,
     )
-    user = models.CharField(_('user'), max_length=150, blank=True)
     ip_address = models.GenericIPAddressField(
         verbose_name=_('IP address'),
         protocol='IPv4',
@@ -250,6 +242,13 @@ class WorkPlace(models.Model):
         null=True,
     )
     name = models.CharField(_('name'), max_length=100)
+    username = models.ForeignKey(
+        UserName,
+        verbose_name=_('username'),
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
     computer = models.ForeignKey(
         Computer,
         on_delete=models.RESTRICT,
