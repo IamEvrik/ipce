@@ -4,8 +4,7 @@ from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from computers.validators import (validate_office_key, validate_os_bit_depth,
-                                  validate_os_key)
+from computers.validators import validate_office_key, validate_os_key
 
 
 class OfficeVersion(models.Model):
@@ -19,7 +18,7 @@ class OfficeVersion(models.Model):
 
     def __str__(self) -> str:
         """Строковое представление - название."""
-        return self.name
+        return f'{self.name}'
 
 
 class OfficeKey(models.Model):
@@ -64,7 +63,7 @@ class OSVersion(models.Model):
 
     def __str__(self) -> str:
         """Название."""
-        return self.name
+        return f'{self.name}'
 
 
 class OSKey(models.Model):
@@ -108,7 +107,7 @@ class Division(models.Model):
 
     def __str__(self) -> str:
         """Название."""
-        return self.name
+        return f'{self.name}'
 
 
 class UserName(models.Model):
@@ -138,7 +137,7 @@ class Responsible(models.Model):
 
     def __str__(self):
         """ФИО."""
-        return self.fio
+        return f'{self.fio}'
 
 
 class Computer(models.Model):
@@ -268,5 +267,4 @@ class WorkPlace(models.Model):
 
     def __str__(self) -> str:
         """Строковое представление - название."""
-        return self.name
-
+        return f'{self.name}'

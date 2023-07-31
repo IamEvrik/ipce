@@ -152,7 +152,6 @@ class Migration(migrations.Migration):
                 (
                     "os_bit_depth",
                     models.IntegerField(
-                        validators=[computers.validators.validate_os_bit_depth],
                         verbose_name="OS bit depth",
                     ),
                 ),

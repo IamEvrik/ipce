@@ -11,7 +11,13 @@ from users import models as usermodels
 class AdminWorkPlace(admin.ModelAdmin):
     """Отображение рабочего места."""
 
-    list_display = ('name', 'computer', 'get_ip_address', 'username', 'monitor')
+    list_display = (
+        'name',
+        'computer',
+        'get_ip_address',
+        'username',
+        'monitor'
+    )
     readonly_fields = ('get_ip_address',)
     empty_value_display = _('Unknown')
 
