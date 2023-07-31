@@ -137,6 +137,13 @@ class WorkPlace(models.Model):
 class Computer(models.Model):
     """Компьютер."""
 
+    class OsBitDepth(models.TextChoices):
+        """Разрядность ОС."""
+
+        X32 = 'x32'
+        X64 = 'x64'
+        __empty__ = _('Unknown')
+
     inventory_number = models.CharField(
         _('inventory number'),
         max_length=10,
@@ -151,9 +158,11 @@ class Computer(models.Model):
         blank=True,
         null=True,
     )
-    os_bit_depth = models.IntegerField(
+    os_bit_depth = models.CharField(
         verbose_name=_('OS bit depth'),
-        validators=(validate_os_bit_depth,)
+        max_length=3,
+        choices=OsBitDepth.choices,
+        blank=True,
     )
     ram_capacity = models.IntegerField(
         verbose_name=_('RAM capacity'),

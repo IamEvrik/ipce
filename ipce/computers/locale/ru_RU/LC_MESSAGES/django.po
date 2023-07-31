@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 09:10+0300\n"
+"POT-Creation-Date: 2023-07-31 10:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\computers\apps.py:12 .\computers\models.py:190
+#: .\computers\apps.py:12 .\computers\models.py:199
 msgid "computers"
 msgstr "компьютеры"
 
 #: .\computers\models.py:14 .\computers\models.py:59 .\computers\models.py:103
-#: .\computers\models.py:125 .\computers\models.py:145
+#: .\computers\models.py:125 .\computers\models.py:152
 msgid "name"
 msgstr "название"
 
@@ -39,11 +39,11 @@ msgid "key"
 msgstr "ключ"
 
 #: .\computers\models.py:39 .\computers\models.py:83 .\computers\models.py:126
-#: .\computers\models.py:186
+#: .\computers\models.py:195
 msgid "note"
 msgstr "примечание"
 
-#: .\computers\models.py:42 .\computers\models.py:168
+#: .\computers\models.py:42 .\computers\models.py:177
 msgid "office key"
 msgstr "ключ офиса"
 
@@ -59,7 +59,7 @@ msgstr "версия ОС"
 msgid "OS versions"
 msgstr "версии ОС"
 
-#: .\computers\models.py:86 .\computers\models.py:150
+#: .\computers\models.py:86 .\computers\models.py:157
 msgid "OS key"
 msgstr "ключ ОС"
 
@@ -75,7 +75,7 @@ msgstr "подразделение"
 msgid "divisions"
 msgstr "подразделения"
 
-#: .\computers\models.py:129 .\computers\models.py:175
+#: .\computers\models.py:129 .\computers\models.py:184
 msgid "work place"
 msgstr "рабочее место"
 
@@ -83,39 +83,43 @@ msgstr "рабочее место"
 msgid "work places"
 msgstr "рабочие места"
 
-#: .\computers\models.py:141
+#: .\computers\models.py:145
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: .\computers\models.py:148
 msgid "inventory number"
 msgstr "инвентарный номер"
 
-#: .\computers\models.py:146
+#: .\computers\models.py:153
 msgid "processor"
 msgstr "процессор"
 
-#: .\computers\models.py:155
+#: .\computers\models.py:162
 msgid "OS bit depth"
 msgstr "разрядность ОС"
 
-#: .\computers\models.py:159
+#: .\computers\models.py:168
 msgid "RAM capacity"
 msgstr "объем оперативной памяти"
 
-#: .\computers\models.py:161
+#: .\computers\models.py:170
 msgid "negative RAM capacity"
 msgstr "отрицательный объем памяти"
 
-#: .\computers\models.py:164
+#: .\computers\models.py:173
 msgid "has SSD"
 msgstr "установлен SSD"
 
-#: .\computers\models.py:179
+#: .\computers\models.py:188
 msgid "user"
 msgstr "пользователь"
 
-#: .\computers\models.py:181
+#: .\computers\models.py:190
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\computers\models.py:189
+#: .\computers\models.py:198
 msgid "computer"
 msgstr "компьютер"
 
