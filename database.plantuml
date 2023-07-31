@@ -49,6 +49,7 @@ class "Компьютер" as Computer {
 	..
 	{field} *inventory_number : str
 	{field} *name : str
+	{field} *proccessor : str
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
 	{field} *ram_capacity : int

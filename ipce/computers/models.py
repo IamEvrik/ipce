@@ -143,6 +143,7 @@ class Computer(models.Model):
         blank=True,
     )
     name = models.CharField(_('name'), max_length=20, blank=True)
+    processor = models.CharField(_('processor'), max_length=100, blank=True)
     os_key = models.ForeignKey(
         OSKey,
         on_delete=models.SET_NULL,
