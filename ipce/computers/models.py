@@ -111,6 +111,22 @@ class Division(models.Model):
         return self.name
 
 
+class UserName(models.Model):
+    """Учетная запись пользователя."""
+
+    name = models.CharField(_('username'), max_length=30, unique=True)
+    fio = models.CharField(_('FIO'), max_length=255, blank=True)
+    password = models.CharField(_('password'), max_length=100, blank=True)
+
+    class Meta:
+        verbose_name = _('username')
+        verbose_name_plural = _('usernames')
+
+    def __str__(self):
+        """Имя пользователя."""
+        return self.name
+
+
 class WorkPlace(models.Model):
     """Рабочее место."""
 
@@ -150,6 +166,13 @@ class Computer(models.Model):
         blank=True,
     )
     name = models.CharField(_('name'), max_length=20, blank=True)
+    username = models.ForeignKey(
+        UserName,
+        verbose_name=_('username'),
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
     processor = models.CharField(_('processor'), max_length=100, blank=True)
     os_key = models.ForeignKey(
         OSKey,

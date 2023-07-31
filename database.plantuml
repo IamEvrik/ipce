@@ -13,7 +13,6 @@ class "Ключ офиса" as OfficeKey {
 	{field} *key_text : str
 	{field} note : str
 }
-note Top of OfficeKey : Создать значение "Неизвестно" по умолчанию
 
 class "Версия ОС" as OSVersion {
 	{field} *version_id : int
@@ -28,7 +27,6 @@ class "Ключ ОС" as OSKey {
 	{field} *key_text : str
 	{field} note : str
 }
-note Top of OSKey : Создать значения "Неизвестно" и "Free"
 
 class "Подразделение" as Division {
 	{field} *division_id : int
@@ -56,7 +54,7 @@ class "Компьютер" as Computer {
 	{field} *has_ssd : bool
 	{field} office_key_id : int
 	{field} *workplace_id : int
-	{field} user : str
+	{field} *username_id : int
 	{field} *ip_address : str
 	{field} note : str
 }	
@@ -72,6 +70,14 @@ class "Монитор" as Monitor {
 	{field} *serial_no : str
 	{field} workplace_id : int
 }
+
+class "Учетные записи" as UserName {
+	{field} *username_id : int
+	..
+	{field} *name : str
+	{field} fio : str
+	{field} password : str
+}
 		
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
@@ -81,5 +87,6 @@ Computer -- OfficeKey
 Computer o-- WorkPlace	
 ComputerHistory --|> Computer
 Monitor o-- WorkPlace
+UserName -- Computer
 
 @enduml
