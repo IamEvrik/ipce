@@ -203,3 +203,32 @@ class Computer(models.Model):
     def __str__(self):
         """IP адрес, название, рабочее место."""
         return f'{self.ip_address}, {self.name}, {self.work_place}'
+
+
+class Monitor(models.Model):
+    """Монитор."""
+
+    name = models.CharField(_('monitor'), max_length=255)
+    serial_no = models.CharField(_('serial number'), max_length=50)
+    work_place = models.ForeignKey(
+        WorkPlace,
+        verbose_name=_('work place'),
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = _('monitor')
+        verbose_name_plural = _('monitors')
+        default_related_name = 'monitor'
+        constraints = (
+            models.UniqueConstraint(
+                fields=('name', 'serial_no'),
+                name='unique_monitor_name_serial_no'
+            ),
+        )
+
+    def __str__(self):
+        """Название и серийный номер."""
+        return f'{self.name}: {self.serial_no}'

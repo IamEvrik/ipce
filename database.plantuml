@@ -65,13 +65,21 @@ class "История компьютера" as ComputerHistory {
 	{field} *change_date : date
 }
 
+class "Монитор" as Monitor {
+	{field} *monitor_id : int
+	..
+	{field} *name : str
+	{field} *serial_no : str
+	{field} workplace_id : int
+}
 		
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
 WorkPlace }-- Division	
 Computer -- OSKey
 Computer -- OfficeKey
-Computer -- WorkPlace	
+Computer o-- WorkPlace	
 ComputerHistory --|> Computer
+Monitor o-- WorkPlace
 
 @enduml

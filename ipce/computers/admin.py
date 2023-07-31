@@ -12,4 +12,6 @@ admin.site.register(mymodels.OSVersion)
 admin.site.register(mymodels.Computer)
 admin.site.register(mymodels.Division)
 admin.site.register(mymodels.WorkPlace)
+admin.site.register(mymodels.Monitor)
+
 admin.site.register(usermodels.User)

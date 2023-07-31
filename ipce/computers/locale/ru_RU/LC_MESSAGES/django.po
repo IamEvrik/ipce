@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 10:10+0300\n"
+"POT-Creation-Date: 2023-07-31 11:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\computers\apps.py:12 .\computers\models.py:199
+#: .\computers\apps.py:12 .\computers\models.py:200
 msgid "computers"
 msgstr "компьютеры"
 
@@ -39,7 +39,7 @@ msgid "key"
 msgstr "ключ"
 
 #: .\computers\models.py:39 .\computers\models.py:83 .\computers\models.py:126
-#: .\computers\models.py:195
+#: .\computers\models.py:196
 msgid "note"
 msgstr "примечание"
 
@@ -76,6 +76,7 @@ msgid "divisions"
 msgstr "подразделения"
 
 #: .\computers\models.py:129 .\computers\models.py:184
+#: .\computers\models.py:215
 msgid "work place"
 msgstr "рабочее место"
 
@@ -119,9 +120,21 @@ msgstr "пользователь"
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\computers\models.py:198
+#: .\computers\models.py:199
 msgid "computer"
 msgstr "компьютер"
+
+#: .\computers\models.py:211 .\computers\models.py:222
+msgid "monitor"
+msgstr "монитор"
+
+#: .\computers\models.py:212
+msgid "serial number"
+msgstr "серийный номер"
+
+#: .\computers\models.py:223
+msgid "monitors"
+msgstr "мониторы"
 
 #: .\computers\validators.py:11 .\computers\validators.py:16
 msgid "invalid key format"
