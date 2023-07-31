@@ -191,6 +191,7 @@ class Computer(models.Model):
         protocol='IPv4',
         blank=True,
         null=True,
+        unique=True,
     )
     note = models.TextField(_('note'), blank=True)
 
