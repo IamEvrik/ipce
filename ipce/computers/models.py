@@ -127,29 +127,6 @@ class UserName(models.Model):
         return self.name
 
 
-class WorkPlace(models.Model):
-    """Рабочее место."""
-
-    division = models.ForeignKey(
-        Division,
-        on_delete=models.SET_NULL,
-        verbose_name=_('division'),
-        related_name='workplaces',
-        blank=True,
-        null=True,
-    )
-    name = models.CharField(_('name'), max_length=100)
-    note = models.TextField(_('note'), blank=True)
-
-    class Meta:
-        verbose_name = _('work place')
-        verbose_name_plural = _('work places')
-
-    def __str__(self) -> str:
-        """Строковое представление - название."""
-        return self.name
-
-
 class Responsible(models.Model):
     """Ответственное лицо."""
 
@@ -220,13 +197,6 @@ class Computer(models.Model):
         blank=True,
         null=True,
     )
-    work_place = models.ForeignKey(
-        WorkPlace,
-        on_delete=models.SET_NULL,
-        verbose_name=_('work place'),
-        blank=True,
-        null=True,
-    )
     user = models.CharField(_('user'), max_length=150, blank=True)
     ip_address = models.GenericIPAddressField(
         verbose_name=_('IP address'),
@@ -243,8 +213,8 @@ class Computer(models.Model):
         default_related_name = 'computer'
 
     def __str__(self):
-        """IP адрес, название, рабочее место."""
-        return f'{self.ip_address}, {self.name}, {self.work_place}'
+        """Название, инвентарный номер, IP-адрес."""
+        return f'{self.name}, {self.inventory_number}, {self.ip_address}'
 
 
 class Monitor(models.Model):
@@ -252,13 +222,6 @@ class Monitor(models.Model):
 
     name = models.CharField(_('monitor'), max_length=255)
     serial_no = models.CharField(_('serial number'), max_length=50)
-    work_place = models.ForeignKey(
-        WorkPlace,
-        verbose_name=_('work place'),
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
 
     class Meta:
         verbose_name = _('monitor')
@@ -274,3 +237,37 @@ class Monitor(models.Model):
     def __str__(self):
         """Название и серийный номер."""
         return f'{self.name}: {self.serial_no}'
+
+
+class WorkPlace(models.Model):
+    """Рабочее место."""
+
+    division = models.ForeignKey(
+        Division,
+        on_delete=models.SET_NULL,
+        verbose_name=_('division'),
+        blank=True,
+        null=True,
+    )
+    name = models.CharField(_('name'), max_length=100)
+    computer = models.ForeignKey(
+        Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+    )
+    monitor = models.ForeignKey(
+        Monitor,
+        on_delete=models.RESTRICT,
+        verbose_name=_('monitor'),
+    )
+    note = models.TextField(_('note'), blank=True)
+
+    class Meta:
+        verbose_name = _('work place')
+        verbose_name_plural = _('work places')
+        default_related_name = 'workplace'
+
+    def __str__(self) -> str:
+        """Строковое представление - название."""
+        return self.name
+

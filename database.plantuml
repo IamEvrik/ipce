@@ -39,6 +39,8 @@ class "Рабочее место" as WorkPlace {
 	..
 	{field} *division_id : int
 	{field} *name : str
+	{field} *computer_id : int
+	{field} *monitor_id : int
 	{field} *note : str
 } 
 
@@ -54,7 +56,6 @@ class "Компьютер" as Computer {
 	{field} *ram_capacity : int
 	{field} *has_ssd : bool
 	{field} office_key_id : int
-	{field} *workplace_id : int
 	{field} *username_id : int
 	{field} *ip_address : str
 	{field} note : str
@@ -69,7 +70,6 @@ class "Монитор" as Monitor {
 	..
 	{field} *name : str
 	{field} *serial_no : str
-	{field} workplace_id : int
 }
 
 class "Учетные записи" as UserName {
@@ -86,16 +86,18 @@ class "Ответственное лицо" as Responsible {
 	{field} *fio : str
 } 
 		
-OfficeKey }-- OfficeVersion
-OSKey }-- OSVersion
-WorkPlace }-- Division	
-Computer -- OSKey
-Computer -- OfficeKey
-Computer o-- WorkPlace	
-Computer }-- Responsible
-ComputerHistory --|> Computer
-Monitor o-- WorkPlace
-UserName -- Computer
+/'
+ ' OfficeKey }-- OfficeVersion
+ ' OSKey }-- OSVersion
+ ' WorkPlace }-- Division	
+ ' Computer -- OSKey
+ ' Computer -- OfficeKey
+ ' Computer o-- WorkPlace	
+ ' Computer }-- Responsible
+ ' ComputerHistory --|> Computer
+ ' Monitor o-- WorkPlace
+ ' UserName -- Computer
+ '/
 
 
 @enduml

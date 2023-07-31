@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 14:18+0300\n"
+"POT-Creation-Date: 2023-07-31 15:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\computers\apps.py:12 .\computers\models.py:242
+#: .\computers\apps.py:12 .\computers\models.py:212
 msgid "computers"
 msgstr "компьютеры"
 
 #: .\computers\models.py:14 .\computers\models.py:59 .\computers\models.py:103
-#: .\computers\models.py:141 .\computers\models.py:182
+#: .\computers\models.py:159 .\computers\models.py:252
 msgid "name"
 msgstr "название"
 
@@ -38,12 +38,12 @@ msgstr "версии офиса"
 msgid "key"
 msgstr "ключ"
 
-#: .\computers\models.py:39 .\computers\models.py:83 .\computers\models.py:142
-#: .\computers\models.py:238
+#: .\computers\models.py:39 .\computers\models.py:83 .\computers\models.py:208
+#: .\computers\models.py:263
 msgid "note"
 msgstr "примечание"
 
-#: .\computers\models.py:42 .\computers\models.py:219
+#: .\computers\models.py:42 .\computers\models.py:196
 msgid "office key"
 msgstr "ключ офиса"
 
@@ -59,7 +59,7 @@ msgstr "версия ОС"
 msgid "OS versions"
 msgstr "версии ОС"
 
-#: .\computers\models.py:86 .\computers\models.py:199
+#: .\computers\models.py:86 .\computers\models.py:176
 msgid "OS key"
 msgstr "ключ ОС"
 
@@ -67,7 +67,7 @@ msgstr "ключ ОС"
 msgid "OS keys"
 msgstr "ключи ОС"
 
-#: .\computers\models.py:106 .\computers\models.py:136
+#: .\computers\models.py:106 .\computers\models.py:248
 msgid "division"
 msgstr "подразделение"
 
@@ -76,11 +76,11 @@ msgid "divisions"
 msgstr "подразделения"
 
 #: .\computers\models.py:117 .\computers\models.py:122
-#: .\computers\models.py:190
+#: .\computers\models.py:167
 msgid "username"
 msgstr "имя пользователя"
 
-#: .\computers\models.py:118 .\computers\models.py:156
+#: .\computers\models.py:118 .\computers\models.py:133
 msgid "FIO"
 msgstr "ФИО"
 
@@ -92,74 +92,74 @@ msgstr "пароль"
 msgid "usernames"
 msgstr "имена пользователей"
 
-#: .\computers\models.py:145 .\computers\models.py:226
-#: .\computers\models.py:257
-msgid "work place"
-msgstr "рабочее место"
-
-#: .\computers\models.py:146
-msgid "work places"
-msgstr "рабочие места"
-
-#: .\computers\models.py:159 .\computers\models.py:185
+#: .\computers\models.py:136 .\computers\models.py:162
 msgid "responsible"
 msgstr "ответственное лицо"
 
-#: .\computers\models.py:160
+#: .\computers\models.py:137
 msgid "responsibles"
 msgstr "ответственные лица"
 
-#: .\computers\models.py:175
+#: .\computers\models.py:152
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: .\computers\models.py:178
+#: .\computers\models.py:155
 msgid "inventory number"
 msgstr "инвентарный номер"
 
-#: .\computers\models.py:195
+#: .\computers\models.py:172
 msgid "processor"
 msgstr "процессор"
 
-#: .\computers\models.py:204
+#: .\computers\models.py:181
 msgid "OS bit depth"
 msgstr "разрядность ОС"
 
-#: .\computers\models.py:210
+#: .\computers\models.py:187
 msgid "RAM capacity"
 msgstr "объем оперативной памяти"
 
-#: .\computers\models.py:212
+#: .\computers\models.py:189
 msgid "negative RAM capacity"
 msgstr "отрицательный объем памяти"
 
-#: .\computers\models.py:215
+#: .\computers\models.py:192
 msgid "has SSD"
 msgstr "установлен SSD"
 
-#: .\computers\models.py:230
+#: .\computers\models.py:200
 msgid "user"
 msgstr "пользователь"
 
-#: .\computers\models.py:232
+#: .\computers\models.py:202
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\computers\models.py:241
+#: .\computers\models.py:211 .\computers\models.py:256
 msgid "computer"
 msgstr "компьютер"
 
-#: .\computers\models.py:253 .\computers\models.py:264
+#: .\computers\models.py:223 .\computers\models.py:227
+#: .\computers\models.py:261
 msgid "monitor"
 msgstr "монитор"
 
-#: .\computers\models.py:254
+#: .\computers\models.py:224
 msgid "serial number"
 msgstr "серийный номер"
 
-#: .\computers\models.py:265
+#: .\computers\models.py:228
 msgid "monitors"
 msgstr "мониторы"
+
+#: .\computers\models.py:266
+msgid "work place"
+msgstr "рабочее место"
+
+#: .\computers\models.py:267
+msgid "work places"
+msgstr "рабочие места"
 
 #: .\computers\validators.py:11 .\computers\validators.py:16
 msgid "invalid key format"
