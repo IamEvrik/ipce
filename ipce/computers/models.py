@@ -150,6 +150,20 @@ class WorkPlace(models.Model):
         return self.name
 
 
+class Responsible(models.Model):
+    """Ответственное лицо."""
+
+    fio = models.CharField(_('FIO'), max_length=255)
+
+    class Meta:
+        verbose_name = _('responsible')
+        verbose_name_plural = _('responsibles')
+
+    def __str__(self):
+        """ФИО."""
+        return self.fio
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -166,6 +180,11 @@ class Computer(models.Model):
         blank=True,
     )
     name = models.CharField(_('name'), max_length=20, blank=True)
+    responsible = models.ForeignKey(
+        Responsible,
+        verbose_name=_('responsible'),
+        on_delete=models.RESTRICT,
+    )
     username = models.ForeignKey(
         UserName,
         verbose_name=_('username'),

@@ -47,6 +47,7 @@ class "Компьютер" as Computer {
 	..
 	{field} *inventory_number : str
 	{field} *name : str
+	{field} *responsible_id : int
 	{field} *proccessor : str
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
@@ -78,6 +79,12 @@ class "Учетные записи" as UserName {
 	{field} fio : str
 	{field} password : str
 }
+
+class "Ответственное лицо" as Responsible {
+	{field} *responsible_id : int
+	..
+	{field} *fio : str
+} 
 		
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
@@ -85,8 +92,10 @@ WorkPlace }-- Division
 Computer -- OSKey
 Computer -- OfficeKey
 Computer o-- WorkPlace	
+Computer }-- Responsible
 ComputerHistory --|> Computer
 Monitor o-- WorkPlace
 UserName -- Computer
+
 
 @enduml
