@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-31 16:30+0300\n"
+"POT-Creation-Date: 2023-08-01 15:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,6 +133,7 @@ msgid "has SSD"
 msgstr "установлен SSD"
 
 #: .\computers\models.py:202 .\computers\models.py:254
+#: .\computers\models.py:285
 msgid "computer"
 msgstr "компьютер"
 
@@ -149,7 +150,7 @@ msgstr "серийный номер"
 msgid "monitors"
 msgstr "мониторы"
 
-#: .\computers\models.py:264
+#: .\computers\models.py:264 .\computers\models.py:279
 msgid "work place"
 msgstr "рабочее место"
 
@@ -157,12 +158,18 @@ msgstr "рабочее место"
 msgid "work places"
 msgstr "рабочие места"
 
+#: .\computers\models.py:288
+msgid "install date"
+msgstr "дата установки"
+
+#: .\computers\models.py:291
+msgid "Workplace computers"
+msgstr "компьютеры рабочего места"
+
+#: .\computers\models.py:292
+msgid "workplaces computers"
+msgstr "компьютеры рабочих мест"
+
 #: .\computers\validators.py:10 .\computers\validators.py:15
 msgid "invalid key format"
 msgstr "неправильный формат ключа"
-
-#~ msgid "invalid os bit length"
-#~ msgstr "неправильная разрядность ОС"
-
-#~ msgid "user"
-#~ msgstr "пользователь"

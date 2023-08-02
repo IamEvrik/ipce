@@ -39,5 +39,6 @@ admin.site.register(mymodels.Division)
 admin.site.register(mymodels.Monitor)
 admin.site.register(mymodels.UserName)
 admin.site.register(mymodels.Responsible)
+admin.site.register(mymodels.WorkplaceComputerHistory)
 
 admin.site.register(usermodels.User)

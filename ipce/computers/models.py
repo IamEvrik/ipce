@@ -268,3 +268,32 @@ class WorkPlace(models.Model):
     def __str__(self) -> str:
         """Строковое представление - название."""
         return f'{self.name}'
+
+
+class WorkplaceComputerHistory(models.Model):
+    """История рабочих мест и компьютеров."""
+
+    workplace = models.ForeignKey(
+        WorkPlace,
+        on_delete = models.CASCADE,
+        verbose_name=_('work place'),
+        related_name='computer_history',
+    )
+    computer = models.ForeignKey(
+        Computer,
+        on_delete=models.CASCADE,
+        verbose_name=_('computer'),
+        related_name='workplace_history',
+    )
+    install_date = models.DateField(_('install date'))
+
+    class Meta:
+        verbose_name = _('Workplace computers')
+        verbose_name_plural = _('workplaces computers')
+        constraints = (
+            models.UniqueConstraint(
+                fields=('workplace', 'computer', 'install_date'),
+                name='unique_workplace_computer_history'
+            ),
+        )
+        
