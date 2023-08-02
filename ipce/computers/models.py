@@ -244,41 +244,43 @@ class RAMType(models.Model):
         return f'{self.name}'
 
 
+class MemoryCapacity(models.Model):
+    """Объемы памяти."""
+
+    capacity = models.CharField(_('capacity'), max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = _('memory capacity')
+        verbose_name_plural = _('memory capacities')
+        ordering = ('capacity',)
+
+    def __str__(self):
+        """Объем."""
+        return f'{self.capacity}'
+
+
 class RAM(Accessory):
     """ОЗУ."""
-
-    class RAMCapacity(models.IntegerChoices):
-        """Объем ОЗУ."""
-
-        GB1 = 1, '1 GB'
-        GB2 = 2, '2 GB'
-        GB4 = 4, '4 GB'
-        GB8 = 8, '8 GB'
-        GB16 = 16, '16 GB'
-        GB32 = 32, '32 GB'
-        GB64 = 64, '64 GB'
-        GB128 = 128, '128 GB'
-        GB256 = 256, '256 GB'
-        GB512 = 512, '512 GB'
-        TB1 = 1024, '1 TB'
-        TB2 = 2048, '2 TB'
-        TB4 = 4096, '4 TB'
-        __empty__ = _('Unknown')
 
     type = models.ForeignKey(
         RAMType,
         on_delete=models.RESTRICT,
         verbose_name=_('RAM type'),
     )
-    capacity = models.IntegerField(
-        _('RAM capacity'),
-        choices=RAMCapacity.choices,
+    capacity = models.ForeignKey(
+        to=MemoryCapacity,
+        on_delete=models.RESTRICT,
+        verbose_name=_('memory capacity'),
+        blank=True,
+        null=True,
     )
     serial_no = models.CharField(_('serial number'), max_length=255, blank=True)
     computer = models.ForeignKey(
         to=Computer,
         on_delete=models.RESTRICT,
         verbose_name=_('computer'),
+        blank=True,
+        null=True
     )
 
     class Meta:
