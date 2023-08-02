@@ -140,6 +140,20 @@ class Responsible(models.Model):
         return f'{self.fio}'
 
 
+class Manufacturer(models.Model):
+    """Фирмы-производители."""
+
+    name = models.CharField(_('name'), unique=True, max_length=255)
+
+    class Meta:
+        verbose_name = _('manufacturer')
+        verbose_name_plural = _('manufacturers')
+
+    def __str__(self):
+        """Название."""
+        return f'{self.name}'
+    
+
 class Computer(models.Model):
     """Компьютер."""
 
