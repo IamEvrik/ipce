@@ -155,6 +155,19 @@ class Manufacturer(models.Model):
         return f'{self.name}'
 
 
+class Accessory(models.Model):
+    """Абстрактный класс для комплектующих."""
+
+    manufacturer = models.ForeignKey(
+        Manufacturer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('manufacturer'),
+    )
+
+    class Meta:
+        abstract = True
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -190,12 +203,6 @@ class Computer(models.Model):
         choices=OsBitDepth.choices,
         blank=True,
     )
-    ram_capacity = models.IntegerField(
-        verbose_name=_('RAM capacity'),
-        validators=(
-            validators.MinValueValidator(0, _('negative RAM capacity')),
-        )
-    )
     has_ssd = models.BooleanField(_('has SSD'), default=False)
     office_key = models.ForeignKey(
         OfficeKey,
@@ -222,6 +229,67 @@ class Computer(models.Model):
         """Название, инвентарный номер, IP-адрес."""
         return f'{self.name}, {self.inventory_number}, {self.ip_address}'
 
+
+class RAMType(models.Model):
+    """Типы ОЗУ."""
+
+    name = models.CharField(_('RAM type'), max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = _('RAM type')
+        verbose_name_plural = _('RAM types')
+
+    def __str__(self):
+        """Название."""
+        return f'{self.name}'
+
+
+class RAM(Accessory):
+    """ОЗУ."""
+
+    class RAMCapacity(models.IntegerChoices):
+        """Объем ОЗУ."""
+
+        GB1 = 1, '1 GB'
+        GB2 = 2, '2 GB'
+        GB4 = 4, '4 GB'
+        GB8 = 8, '8 GB'
+        GB16 = 16, '16 GB'
+        GB32 = 32, '32 GB'
+        GB64 = 64, '64 GB'
+        GB128 = 128, '128 GB'
+        GB256 = 256, '256 GB'
+        GB512 = 512, '512 GB'
+        TB1 = 1024, '1 TB'
+        TB2 = 2048, '2 TB'
+        TB4 = 4096, '4 TB'
+        __empty__ = _('Unknown')
+
+    type = models.ForeignKey(
+        RAMType,
+        on_delete=models.RESTRICT,
+        verbose_name=_('RAM type'),
+    )
+    capacity = models.IntegerField(
+        _('RAM capacity'),
+        choices=RAMCapacity.choices,
+    )
+    serial_no = models.CharField(_('serial number'), max_length=255, blank=True)
+    computer = models.ForeignKey(
+        to=Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+    )
+
+    class Meta:
+        verbose_name = _('RAM')
+        verbose_name_plural = _('RAM')
+        default_related_name = 'ram'
+
+    def __str__(self):
+        """Название, тип и объем."""
+        return f'{self.manufacturer} {self.capacity} {self.type}'
+        
 
 class Monitor(models.Model):
     """Монитор."""

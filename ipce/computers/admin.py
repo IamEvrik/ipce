@@ -30,12 +30,29 @@ class AdminWorkPlace(admin.ModelAdmin):
         return obj.computer.ip_address
 
 
+class InlineComputerRAM(admin.TabularInline):
+    """Отображение памяти в компьютере."""
+
+    model = mymodels.RAM
+    extra = 1
+
+
+@admin.register(mymodels.Computer)
+class AdminComputer(admin.ModelAdmin):
+    """Отображение компьютеров в админке."""
+
+    inlines = [
+        InlineComputerRAM
+    ]
+
+
 admin.site.register(mymodels.OfficeKey)
 admin.site.register(mymodels.OfficeVersion)
 admin.site.register(mymodels.OSKey)
 admin.site.register(mymodels.OSVersion)
 admin.site.register(mymodels.Manufacturer)
-admin.site.register(mymodels.Computer)
+admin.site.register(mymodels.RAMType)
+admin.site.register(mymodels.RAM)
 admin.site.register(mymodels.Division)
 admin.site.register(mymodels.Monitor)
 admin.site.register(mymodels.UserName)
