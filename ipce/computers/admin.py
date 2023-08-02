@@ -1,9 +1,11 @@
 """Настройки админки для приложения computers."""
 
 from django.contrib import admin
+from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
 from computers import models as mymodels
+from software import models as softmodels
 from users import models as usermodels
 
 
@@ -46,10 +48,11 @@ class AdminComputer(admin.ModelAdmin):
     ]
 
 
-admin.site.register(mymodels.OfficeKey)
-admin.site.register(mymodels.OfficeVersion)
-admin.site.register(mymodels.OSKey)
-admin.site.register(mymodels.OSVersion)
+admin.site.register(softmodels.OfficeKey)
+admin.site.register(softmodels.OfficeVersion)
+admin.site.register(softmodels.OSKey)
+admin.site.register(softmodels.OSVersion)
+
 admin.site.register(mymodels.Manufacturer)
 admin.site.register(mymodels.MemoryCapacity)
 admin.site.register(mymodels.RAMType)
@@ -61,3 +64,4 @@ admin.site.register(mymodels.Responsible)
 admin.site.register(mymodels.WorkplaceComputerHistory)
 
 admin.site.register(usermodels.User)
+admin.site.unregister(Group)

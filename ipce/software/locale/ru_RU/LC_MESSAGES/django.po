@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-02 16:40+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\software\apps.py:12
+msgid "software"
+msgstr "программы"
+
+#: .\software\models.py:12 .\software\models.py:57
+msgid "name"
+msgstr "название"
+
+#: .\software\models.py:15 .\software\models.py:29
+msgid "office version"
+msgstr "версия офиса"
+
+#: .\software\models.py:16
+msgid "office versions"
+msgstr "версии офиса"
+
+#: .\software\models.py:33 .\software\models.py:77
+msgid "key"
+msgstr "ключ"
+
+#: .\software\models.py:37 .\software\models.py:81
+msgid "note"
+msgstr "примечание"
+
+#: .\software\models.py:40
+msgid "office key"
+msgstr "ключ офиса"
+
+#: .\software\models.py:41
+msgid "office keys"
+msgstr "ключи офиса"
+
+#: .\software\models.py:60 .\software\models.py:74
+msgid "OS version"
+msgstr "версия ОС"
+
+#: .\software\models.py:61
+msgid "OS versions"
+msgstr "версии ОС"
+
+#: .\software\models.py:84
+msgid "OS key"
+msgstr "ключ ОС"
+
+#: .\software\models.py:85
+msgid "OS keys"
+msgstr "ключи ОС"
+
+#: .\software\validators.py:10 .\software\validators.py:15
+msgid "invalid key format"
+msgstr "неправильный формат ключа"

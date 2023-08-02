@@ -1,99 +1,9 @@
 """Модели приложения computers."""
 
-from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from computers.validators import validate_office_key, validate_os_key
-
-
-class OfficeVersion(models.Model):
-    """Версии офиса."""
-
-    name = models.CharField(_('name'), max_length=100)
-
-    class Meta:
-        verbose_name = _('office version')
-        verbose_name_plural = _('office versions')
-
-    def __str__(self) -> str:
-        """Строковое представление - название."""
-        return f'{self.name}'
-
-
-class OfficeKey(models.Model):
-    """Ключи для офиса."""
-
-    office_version = models.ForeignKey(
-        OfficeVersion,
-        on_delete=models.CASCADE,
-        verbose_name=_('office version'),
-        related_name='keys'
-    )
-    key_text = models.CharField(
-        verbose_name=_('key'),
-        max_length=40,
-        validators=(validate_office_key,)
-    )
-    note = models.TextField(_('note'), blank=True)
-
-    class Meta:
-        verbose_name = _('office key')
-        verbose_name_plural = _('office keys')
-        constraints = (
-            models.UniqueConstraint(
-                fields=('office_version', 'key_text'),
-                name='office_key_unique',
-            ),
-        )
-
-    def __str__(self) -> str:
-        """Строковое представление - версия и ключ."""
-        return f'{self.office_version} - {self.key_text}'
-
-
-class OSVersion(models.Model):
-    """Версии ОС."""
-
-    name = models.CharField(_('name'), max_length=100)
-
-    class Meta:
-        verbose_name = _('OS version')
-        verbose_name_plural = _('OS versions')
-
-    def __str__(self) -> str:
-        """Название."""
-        return f'{self.name}'
-
-
-class OSKey(models.Model):
-    """Ключи ОС."""
-
-    os_version = models.ForeignKey(
-        OSVersion,
-        on_delete=models.CASCADE,
-        verbose_name=_('OS version')
-    )
-    key_text = models.CharField(
-        verbose_name=_('key'),
-        max_length=40,
-        validators=(validate_os_key,)
-    )
-    note = models.TextField(_('note'), blank=True)
-
-    class Meta:
-        verbose_name = _('OS key')
-        verbose_name_plural = _('OS keys')
-        constraints = (
-            models.UniqueConstraint(
-                fields=('os_version', 'key_text'),
-                name='OS_key_unique',
-            ),
-        )
-
-    def __str__(self) -> str:
-        """Версия и ключ."""
-        return f'{self.os_version} - {self.key_text}'
+from software import models as softmodels
 
 
 class Division(models.Model):
@@ -191,7 +101,7 @@ class Computer(models.Model):
     )
     processor = models.CharField(_('processor'), max_length=100, blank=True)
     os_key = models.ForeignKey(
-        OSKey,
+        softmodels.OSKey,
         on_delete=models.SET_NULL,
         verbose_name=_('OS key'),
         blank=True,
@@ -205,7 +115,7 @@ class Computer(models.Model):
     )
     has_ssd = models.BooleanField(_('has SSD'), default=False)
     office_key = models.ForeignKey(
-        OfficeKey,
+        softmodels.OfficeKey,
         on_delete=models.SET_NULL,
         verbose_name=_('office key'),
         blank=True,
@@ -262,7 +172,7 @@ class MemoryCapacity(models.Model):
 class RAM(Accessory):
     """ОЗУ."""
 
-    type = models.ForeignKey(
+    ram_type = models.ForeignKey(
         RAMType,
         on_delete=models.RESTRICT,
         verbose_name=_('RAM type'),
@@ -274,7 +184,11 @@ class RAM(Accessory):
         blank=True,
         null=True,
     )
-    serial_no = models.CharField(_('serial number'), max_length=255, blank=True)
+    serial_no = models.CharField(
+        _('serial number'),
+        max_length=255,
+        blank=True
+    )
     computer = models.ForeignKey(
         to=Computer,
         on_delete=models.RESTRICT,
@@ -290,15 +204,15 @@ class RAM(Accessory):
 
     def __str__(self):
         """Название, тип и объем."""
-        return f'{self.manufacturer} {self.capacity} {self.type}'
-        
+        return f'{self.manufacturer} {self.capacity} {self.ram_type}'
+
 
 class Monitor(models.Model):
     """Монитор."""
 
     manufacturer = models.ForeignKey(
         Manufacturer,
-        on_delete = models.RESTRICT,
+        on_delete=models.RESTRICT,
         verbose_name=_('manufacturer'),
         related_name='monitor'
     )
@@ -366,7 +280,7 @@ class WorkplaceComputerHistory(models.Model):
 
     workplace = models.ForeignKey(
         WorkPlace,
-        on_delete = models.CASCADE,
+        on_delete=models.CASCADE,
         verbose_name=_('work place'),
         related_name='computer_history',
     )
@@ -387,4 +301,3 @@ class WorkplaceComputerHistory(models.Model):
                 name='unique_workplace_computer_history'
             ),
         )
-        
