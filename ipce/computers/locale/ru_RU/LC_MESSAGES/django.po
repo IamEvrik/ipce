@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 14:29+0300\n"
+"POT-Creation-Date: 2023-08-02 14:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "компьютеры"
 
 #: .\computers\models.py:13 .\computers\models.py:58 .\computers\models.py:102
 #: .\computers\models.py:146 .\computers\models.py:172
-#: .\computers\models.py:257
+#: .\computers\models.py:263
 msgid "name"
 msgstr "название"
 
@@ -48,7 +48,7 @@ msgid "key"
 msgstr "ключ"
 
 #: .\computers\models.py:38 .\computers\models.py:82 .\computers\models.py:213
-#: .\computers\models.py:275
+#: .\computers\models.py:281
 msgid "note"
 msgstr "примечание"
 
@@ -76,7 +76,7 @@ msgstr "ключ ОС"
 msgid "OS keys"
 msgstr "ключи ОС"
 
-#: .\computers\models.py:105 .\computers\models.py:253
+#: .\computers\models.py:105 .\computers\models.py:259
 msgid "division"
 msgstr "подразделение"
 
@@ -85,7 +85,7 @@ msgid "divisions"
 msgstr "подразделения"
 
 #: .\computers\models.py:116 .\computers\models.py:121
-#: .\computers\models.py:260
+#: .\computers\models.py:266
 msgid "username"
 msgstr "имя пользователя"
 
@@ -109,7 +109,7 @@ msgstr "ответственное лицо"
 msgid "responsibles"
 msgstr "ответственные лица"
 
-#: .\computers\models.py:149
+#: .\computers\models.py:149 .\computers\models.py:231
 msgid "manufacturer"
 msgstr "производитель"
 
@@ -141,41 +141,44 @@ msgstr "отрицательный объем памяти"
 msgid "has SSD"
 msgstr "установлен SSD"
 
-#: .\computers\models.py:216 .\computers\models.py:268
-#: .\computers\models.py:299
+#: .\computers\models.py:216 .\computers\models.py:274
+#: .\computers\models.py:305
 msgid "computer"
 msgstr "компьютер"
 
-#: .\computers\models.py:228 .\computers\models.py:232
-#: .\computers\models.py:273
-msgid "monitor"
-msgstr "монитор"
+#: .\computers\models.py:234
+msgid "model"
+msgstr "модель"
 
-#: .\computers\models.py:229
+#: .\computers\models.py:235
 msgid "serial number"
 msgstr "серийный номер"
 
-#: .\computers\models.py:233
+#: .\computers\models.py:238 .\computers\models.py:279
+msgid "monitor"
+msgstr "монитор"
+
+#: .\computers\models.py:239
 msgid "monitors"
 msgstr "мониторы"
 
-#: .\computers\models.py:278 .\computers\models.py:293
+#: .\computers\models.py:284 .\computers\models.py:299
 msgid "work place"
 msgstr "рабочее место"
 
-#: .\computers\models.py:279
+#: .\computers\models.py:285
 msgid "work places"
 msgstr "рабочие места"
 
-#: .\computers\models.py:302
+#: .\computers\models.py:308
 msgid "install date"
 msgstr "дата установки"
 
-#: .\computers\models.py:305
+#: .\computers\models.py:311
 msgid "Workplace computers"
 msgstr "компьютеры рабочего места"
 
-#: .\computers\models.py:306
+#: .\computers\models.py:312
 msgid "workplaces computers"
 msgstr "компьютеры рабочих мест"
 

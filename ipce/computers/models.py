@@ -148,11 +148,12 @@ class Manufacturer(models.Model):
     class Meta:
         verbose_name = _('manufacturer')
         verbose_name_plural = _('manufacturers')
+        ordering = ('name',)
 
     def __str__(self):
         """Название."""
         return f'{self.name}'
-    
+
 
 class Computer(models.Model):
     """Компьютер."""
@@ -225,7 +226,13 @@ class Computer(models.Model):
 class Monitor(models.Model):
     """Монитор."""
 
-    name = models.CharField(_('monitor'), max_length=255)
+    manufacturer = models.ForeignKey(
+        Manufacturer,
+        on_delete = models.RESTRICT,
+        verbose_name=_('manufacturer'),
+        related_name='monitor'
+    )
+    name = models.CharField(_('model'), max_length=255)
     serial_no = models.CharField(_('serial number'), max_length=50)
 
     class Meta:
