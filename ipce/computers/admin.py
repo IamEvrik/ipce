@@ -9,7 +9,17 @@ from software import models as softmodels
 from users import models as usermodels
 
 
-@admin.register(mymodels.WorkPlace)
+class IPCEAdminSite(admin.AdminSite):
+    """Настройка админки."""
+
+    site_header = _('YPS admin')
+    site_title = _('YPS admin portal')
+    index_title = _('Administration')
+
+
+ipce_admin = IPCEAdminSite(name='ipce_admin')
+
+@admin.register(mymodels.WorkPlace, site=ipce_admin)
 class AdminWorkPlace(admin.ModelAdmin):
     """Отображение рабочего места."""
 
@@ -25,7 +35,7 @@ class AdminWorkPlace(admin.ModelAdmin):
 
     @admin.display(
         ordering='computer__ip_address',
-        description=_('IP address')
+        description=_('IP address'),
     )
     def get_ip_address(self, obj):
         """Отдельное отображение IP адреса."""
@@ -39,7 +49,7 @@ class InlineComputerRAM(admin.TabularInline):
     extra = 1
 
 
-@admin.register(mymodels.Computer)
+@admin.register(mymodels.Computer, site=ipce_admin)
 class AdminComputer(admin.ModelAdmin):
     """Отображение компьютеров в админке."""
 
@@ -48,20 +58,20 @@ class AdminComputer(admin.ModelAdmin):
     ]
 
 
-admin.site.register(softmodels.OfficeKey)
-admin.site.register(softmodels.OfficeVersion)
-admin.site.register(softmodels.OSKey)
-admin.site.register(softmodels.OSVersion)
+ipce_admin.register(softmodels.OfficeKey)
+ipce_admin.register(softmodels.OfficeVersion)
+ipce_admin.register(softmodels.OSKey)
+ipce_admin.register(softmodels.OSVersion)
 
-admin.site.register(mymodels.Manufacturer)
-admin.site.register(mymodels.MemoryCapacity)
-admin.site.register(mymodels.RAMType)
-admin.site.register(mymodels.RAM)
-admin.site.register(mymodels.Division)
-admin.site.register(mymodels.Monitor)
-admin.site.register(mymodels.UserName)
-admin.site.register(mymodels.Responsible)
-admin.site.register(mymodels.WorkplaceComputerHistory)
+ipce_admin.register(mymodels.Manufacturer)
+ipce_admin.register(mymodels.MemoryCapacity)
+ipce_admin.register(mymodels.RAMType)
+ipce_admin.register(mymodels.RAM)
+ipce_admin.register(mymodels.Division)
+ipce_admin.register(mymodels.Monitor)
+ipce_admin.register(mymodels.UserName)
+ipce_admin.register(mymodels.Responsible)
+ipce_admin.register(mymodels.WorkplaceComputerHistory)
 
-admin.site.register(usermodels.User)
-admin.site.unregister(Group)
+ipce_admin.register(usermodels.User)
+# admin.site.unregister(Group)
