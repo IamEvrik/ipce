@@ -81,6 +81,8 @@ ipce_admin.register(mymodels.Division)
 ipce_admin.register(mymodels.UserName)
 ipce_admin.register(mymodels.Responsible)
 ipce_admin.register(mymodels.WorkplaceComputerHistory)
+ipce_admin.register(mymodels.HDDType)
+ipce_admin.register(mymodels.HDD)
 
 
 @admin.register(softmodels.OfficeKey, site=ipce_admin)

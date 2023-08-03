@@ -125,7 +125,6 @@ class Computer(models.Model):
         choices=OsBitDepth.choices,
         blank=True,
     )
-    has_ssd = models.BooleanField(_('has SSD'), default=False)
     office_key = models.ForeignKey(
         softmodels.OfficeKey,
         on_delete=models.SET_NULL,
@@ -227,6 +226,53 @@ class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):
     def __str__(self):
         """Название и серийный номер."""
         return f'{self.name}: {self.serial_no}'
+
+
+class HDDType(models.Model):
+    """Тип жесткого диска."""
+
+    name = models.CharField(_('name'), max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = _('hdd type')
+        verbose_name_plural = _('hdd types')
+
+    def __str__(self):
+        """Название."""
+        return f'{self.name}'
+
+
+class HDD(AbstractManufacturerModel, AbstractSerialNoModel):
+    """Жесткий диск."""
+
+    model = models.CharField(_('model'), max_length=100)
+    hdd_type = models.ForeignKey(
+        to=HDDType,
+        on_delete=models.RESTRICT,
+        verbose_name=_('hdd type'),
+        blank=True,
+        null=True,
+    )
+    capacity = models.ForeignKey(
+        to=MemoryCapacity,
+        on_delete=models.RESTRICT,
+    )
+    computer = models.ForeignKey(
+        to=Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+        blank=True,
+        null=True
+    )
+
+    class Meta:
+        verbose_name = _('HDD')
+        verbose_name_plural = _('HDDs')
+        default_related_name = 'hdd'
+
+    def __str__(self):
+        """Тип, производитель, объем."""
+        return f'{self.hdd_type} {self.manufacturer} {self.capacity}'
 
 
 class WorkPlace(models.Model):
