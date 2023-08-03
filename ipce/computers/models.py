@@ -6,6 +6,18 @@ from django.utils.translation import gettext_lazy as _
 from software import models as softmodels
 
 
+class AbstractSerialNoModel(models.Model):
+    """Базовая модель с серийным номером."""
+
+    serial_no = models.CharField(
+        _('serial number'),
+        max_length=255,
+    )
+
+    class Meta:
+        abstract = True
+
+
 class Division(models.Model):
     """Отдел."""
 
@@ -65,7 +77,7 @@ class Manufacturer(models.Model):
         return f'{self.name}'
 
 
-class Accessory(models.Model):
+class AbstractManufacturerModel(models.Model):
     """Абстрактный класс для комплектующих."""
 
     manufacturer = models.ForeignKey(
@@ -169,7 +181,7 @@ class MemoryCapacity(models.Model):
         return f'{self.capacity}'
 
 
-class RAM(Accessory):
+class RAM(AbstractManufacturerModel, AbstractSerialNoModel):
     """ОЗУ."""
 
     ram_type = models.ForeignKey(
@@ -183,11 +195,6 @@ class RAM(Accessory):
         verbose_name=_('memory capacity'),
         blank=True,
         null=True,
-    )
-    serial_no = models.CharField(
-        _('serial number'),
-        max_length=255,
-        blank=True
     )
     computer = models.ForeignKey(
         to=Computer,
@@ -207,28 +214,15 @@ class RAM(Accessory):
         return f'{self.manufacturer} {self.capacity} {self.ram_type}'
 
 
-class Monitor(models.Model):
+class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):
     """Монитор."""
 
-    manufacturer = models.ForeignKey(
-        Manufacturer,
-        on_delete=models.RESTRICT,
-        verbose_name=_('manufacturer'),
-        related_name='monitor'
-    )
     name = models.CharField(_('model'), max_length=255)
-    serial_no = models.CharField(_('serial number'), max_length=50)
 
     class Meta:
         verbose_name = _('monitor')
         verbose_name_plural = _('monitors')
         default_related_name = 'monitor'
-        constraints = (
-            models.UniqueConstraint(
-                fields=('name', 'serial_no'),
-                name='unique_monitor_name_serial_no'
-            ),
-        )
 
     def __str__(self):
         """Название и серийный номер."""

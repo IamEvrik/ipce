@@ -19,6 +19,7 @@ class IPCEAdminSite(admin.AdminSite):
 
 ipce_admin = IPCEAdminSite(name='ipce_admin')
 
+
 @admin.register(mymodels.WorkPlace, site=ipce_admin)
 class AdminWorkPlace(admin.ModelAdmin):
     """Отображение рабочего места."""
@@ -58,20 +59,47 @@ class AdminComputer(admin.ModelAdmin):
     ]
 
 
-ipce_admin.register(softmodels.OfficeKey)
-ipce_admin.register(softmodels.OfficeVersion)
-ipce_admin.register(softmodels.OSKey)
-ipce_admin.register(softmodels.OSVersion)
+@admin.register(mymodels.Monitor, site=ipce_admin)
+class AdminMonitor(admin.ModelAdmin):
+    """Отображение мониторов в админке."""
+
+    fields = ('manufacturer', 'name', 'serial_no')
+
+
+
+@admin.register(mymodels.RAM, site=ipce_admin)
+class AdminRAM(admin.ModelAdmin):
+    """Отображение ОЗУ в админке."""
+
+    fields = ('manufacturer', 'ram_type', 'capacity', 'serial_no', 'computer')
+
 
 ipce_admin.register(mymodels.Manufacturer)
 ipce_admin.register(mymodels.MemoryCapacity)
 ipce_admin.register(mymodels.RAMType)
-ipce_admin.register(mymodels.RAM)
 ipce_admin.register(mymodels.Division)
-ipce_admin.register(mymodels.Monitor)
 ipce_admin.register(mymodels.UserName)
 ipce_admin.register(mymodels.Responsible)
 ipce_admin.register(mymodels.WorkplaceComputerHistory)
+
+
+@admin.register(softmodels.OfficeKey, site=ipce_admin)
+class AdminOfficeKey(admin.ModelAdmin):
+    """Отображение ключей офиса в админке."""
+
+    fields = ('office_version', 'key_text', 'note')
+
+
+@admin.register(softmodels.OSKey, site=ipce_admin)
+class AdminOSKey(admin.ModelAdmin):
+    """Отображение ключей офиса в админке."""
+
+    fields = ('os_version', 'key_text', 'note')
+
+
+ipce_admin.register(softmodels.OfficeVersion)
+ipce_admin.register(softmodels.OSVersion)
+
 
 ipce_admin.register(usermodels.User)
 # admin.site.unregister(Group)
