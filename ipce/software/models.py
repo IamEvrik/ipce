@@ -3,7 +3,21 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from software.validators import validate_office_key, validate_os_key
+from software.validators import validate_key
+
+
+class AbstractKeyModel(models.Model):
+    """Модель ключ и примечание."""
+
+    key_text = models.CharField(
+        verbose_name=_('key'),
+        max_length=40,
+        validators=(validate_key,)
+    )
+    note = models.TextField(_('note'), blank=True)
+
+    class Meta:
+        abstract = True
 
 
 class OfficeVersion(models.Model):
@@ -20,7 +34,7 @@ class OfficeVersion(models.Model):
         return f'{self.name}'
 
 
-class OfficeKey(models.Model):
+class OfficeKey(AbstractKeyModel):
     """Ключи для офиса."""
 
     office_version = models.ForeignKey(
@@ -29,12 +43,6 @@ class OfficeKey(models.Model):
         verbose_name=_('office version'),
         related_name='keys'
     )
-    key_text = models.CharField(
-        verbose_name=_('key'),
-        max_length=40,
-        validators=(validate_office_key,)
-    )
-    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('office key')
@@ -65,7 +73,7 @@ class OSVersion(models.Model):
         return f'{self.name}'
 
 
-class OSKey(models.Model):
+class OSKey(AbstractKeyModel):
     """Ключи ОС."""
 
     os_version = models.ForeignKey(
@@ -73,12 +81,6 @@ class OSKey(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_('OS version')
     )
-    key_text = models.CharField(
-        verbose_name=_('key'),
-        max_length=40,
-        validators=(validate_os_key,)
-    )
-    note = models.TextField(_('note'), blank=True)
 
     class Meta:
         verbose_name = _('OS key')

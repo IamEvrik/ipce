@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-02 16:40+0300\n"
+"POT-Creation-Date: 2023-08-03 10:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,50 +21,50 @@ msgstr ""
 msgid "software"
 msgstr "программы"
 
-#: .\software\models.py:12 .\software\models.py:57
-msgid "name"
-msgstr "название"
-
-#: .\software\models.py:15 .\software\models.py:29
-msgid "office version"
-msgstr "версия офиса"
-
-#: .\software\models.py:16
-msgid "office versions"
-msgstr "версии офиса"
-
-#: .\software\models.py:33 .\software\models.py:77
+#: .\software\models.py:13
 msgid "key"
 msgstr "ключ"
 
-#: .\software\models.py:37 .\software\models.py:81
+#: .\software\models.py:17
 msgid "note"
 msgstr "примечание"
 
-#: .\software\models.py:40
+#: .\software\models.py:26 .\software\models.py:65
+msgid "name"
+msgstr "название"
+
+#: .\software\models.py:29 .\software\models.py:43
+msgid "office version"
+msgstr "версия офиса"
+
+#: .\software\models.py:30
+msgid "office versions"
+msgstr "версии офиса"
+
+#: .\software\models.py:48
 msgid "office key"
 msgstr "ключ офиса"
 
-#: .\software\models.py:41
+#: .\software\models.py:49
 msgid "office keys"
 msgstr "ключи офиса"
 
-#: .\software\models.py:60 .\software\models.py:74
+#: .\software\models.py:68 .\software\models.py:82
 msgid "OS version"
 msgstr "версия ОС"
 
-#: .\software\models.py:61
+#: .\software\models.py:69
 msgid "OS versions"
 msgstr "версии ОС"
 
-#: .\software\models.py:84
+#: .\software\models.py:86
 msgid "OS key"
 msgstr "ключ ОС"
 
-#: .\software\models.py:85
+#: .\software\models.py:87
 msgid "OS keys"
 msgstr "ключи ОС"
 
-#: .\software\validators.py:10 .\software\validators.py:15
+#: .\software\validators.py:10
 msgid "invalid key format"
 msgstr "неправильный формат ключа"
