@@ -90,6 +90,35 @@ class AbstractManufacturerModel(models.Model):
         abstract = True
 
 
+class MemoryCapacity(models.Model):
+    """Объемы памяти."""
+
+    capacity = models.CharField(_('capacity'), max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = _('memory capacity')
+        verbose_name_plural = _('memory capacities')
+        ordering = ('capacity',)
+
+    def __str__(self):
+        """Объем."""
+        return f'{self.capacity}'
+
+
+class HDDType(models.Model):
+    """Тип жесткого диска."""
+
+    name = models.CharField(_('name'), max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = _('hdd type')
+        verbose_name_plural = _('hdd types')
+
+    def __str__(self):
+        """Название."""
+        return f'{self.name}'
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -151,6 +180,58 @@ class Computer(models.Model):
         return f'{self.name}, {self.inventory_number}, {self.ip_address}'
 
 
+class HDDModel(AbstractManufacturerModel):
+    """Модели жестких дисков."""
+
+    model = models.CharField(_('model'), max_length=100)
+    hdd_type = models.ForeignKey(
+        to=HDDType,
+        on_delete=models.RESTRICT,
+        verbose_name=_('hdd type'),
+        blank=True,
+        null=True,
+    )
+    capacity = models.ForeignKey(
+        to=MemoryCapacity,
+        on_delete=models.RESTRICT,
+    )
+
+    class Meta:
+        verbose_name = _('HDD model')
+        verbose_name_plural = _('HDD models')
+
+    def __str__(self):
+        """Производитель, тип, объем."""
+        return f'{self.manufacturer} {self.hdd_type} {self.capacity}'
+
+
+class HDD(AbstractSerialNoModel):
+    """Жесткий диск."""
+
+    hdd_model = models.ForeignKey(
+        to=HDDModel,
+        on_delete=models.RESTRICT,
+        verbose_name=_('HDD model'),
+    )
+
+    computer = models.ForeignKey(
+        to=Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+        blank=True,
+        null=True
+    )
+
+    class Meta:
+        verbose_name = _('HDD')
+        verbose_name_plural = _('HDDs')
+        default_related_name = 'hdd'
+
+    def __str__(self):
+        """Тип, производитель, объем."""
+        return f'{self.hdd_model} {self.serial_no}'
+
+
 class RAMType(models.Model):
     """Типы ОЗУ."""
 
@@ -163,21 +244,6 @@ class RAMType(models.Model):
     def __str__(self):
         """Название."""
         return f'{self.name}'
-
-
-class MemoryCapacity(models.Model):
-    """Объемы памяти."""
-
-    capacity = models.CharField(_('capacity'), max_length=10, unique=True)
-
-    class Meta:
-        verbose_name = _('memory capacity')
-        verbose_name_plural = _('memory capacities')
-        ordering = ('capacity',)
-
-    def __str__(self):
-        """Объем."""
-        return f'{self.capacity}'
 
 
 class RAMModel(AbstractManufacturerModel):
@@ -245,53 +311,6 @@ class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):
     def __str__(self):
         """Название и серийный номер."""
         return f'{self.name}: {self.serial_no}'
-
-
-class HDDType(models.Model):
-    """Тип жесткого диска."""
-
-    name = models.CharField(_('name'), max_length=10, unique=True)
-
-    class Meta:
-        verbose_name = _('hdd type')
-        verbose_name_plural = _('hdd types')
-
-    def __str__(self):
-        """Название."""
-        return f'{self.name}'
-
-
-class HDD(AbstractManufacturerModel, AbstractSerialNoModel):
-    """Жесткий диск."""
-
-    model = models.CharField(_('model'), max_length=100)
-    hdd_type = models.ForeignKey(
-        to=HDDType,
-        on_delete=models.RESTRICT,
-        verbose_name=_('hdd type'),
-        blank=True,
-        null=True,
-    )
-    capacity = models.ForeignKey(
-        to=MemoryCapacity,
-        on_delete=models.RESTRICT,
-    )
-    computer = models.ForeignKey(
-        to=Computer,
-        on_delete=models.RESTRICT,
-        verbose_name=_('computer'),
-        blank=True,
-        null=True
-    )
-
-    class Meta:
-        verbose_name = _('HDD')
-        verbose_name_plural = _('HDDs')
-        default_related_name = 'hdd'
-
-    def __str__(self):
-        """Тип, производитель, объем."""
-        return f'{self.hdd_type} {self.manufacturer} {self.capacity}'
 
 
 class WorkPlace(models.Model):

@@ -1,7 +1,6 @@
 """Настройки админки для приложения computers."""
 
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.utils.translation import gettext_lazy as _
 
 from computers import models as mymodels
@@ -66,12 +65,18 @@ class AdminMonitor(admin.ModelAdmin):
     fields = ('manufacturer', 'name', 'serial_no')
 
 
-
 @admin.register(mymodels.RAMModel, site=ipce_admin)
 class AdminRAM(admin.ModelAdmin):
     """Отображение ОЗУ в админке."""
 
     fields = ('manufacturer', 'ram_type', 'capacity')
+
+
+@admin.register(mymodels.HDDModel, site=ipce_admin)
+class AdminHDDModel(admin.ModelAdmin):
+    """Отображение моделей жестких дисков."""
+
+    fields = ('manufacturer', 'hdd_type', 'model', 'capacity')
 
 
 ipce_admin.register(mymodels.Manufacturer)
@@ -105,4 +110,3 @@ ipce_admin.register(softmodels.OSVersion)
 
 
 ipce_admin.register(usermodels.User)
-# admin.site.unregister(Group)

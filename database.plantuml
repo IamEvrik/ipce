@@ -54,8 +54,6 @@ class "Компьютер" as Computer {
 	{field} *proccessor : str
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
-	{field} *ram_capacity : int
-	{field} *has_ssd : bool
 	{field} office_key_id : int
 	{field} *ip_address : str
 	{field} note : str
@@ -121,10 +119,8 @@ class "Класс HDD" as HDDType {
 class "HDD" as HDD {
 	{field} *hdd_id : int
 	..
-	{field} hddtype_id : int
-	{field} manufacturer_id : int
-	{field} *model : int
-	{field} capacity_id : int
+	{field} *hddmodel_id : int
+	{field} *serial_no : str
 	{field} computer_id : int
 }
 
@@ -136,6 +132,14 @@ class "Модель ОЗУ" as RAMModel {
 	{field} capacity_id : int
 }
 
+class "Модель HDD" as HDDModel {
+	{field} *hddmodel_id : int
+	..
+	{field} *hddtype_id : int
+	{field} *manufacturer_id : int
+	{field} *model : str
+	{field} *capacity_id : int	
+}
 
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
@@ -153,8 +157,10 @@ RAMModel }-- MemoryCapacity
 RAMModel }-- Manufacturer
 RAM }-- RAMModel
 RAM }-- Computer
-HDD }-- HDDType
+HDDModel }-- HDDType
 HDD }-- Computer	
-HDD }-- Manufacturer
+HDDModel }-- Manufacturer
+HDDModel }-- MemoryCapacity
+HDD }-- HDDModel	
 
 @enduml
