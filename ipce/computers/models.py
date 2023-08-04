@@ -180,8 +180,8 @@ class MemoryCapacity(models.Model):
         return f'{self.capacity}'
 
 
-class RAM(AbstractManufacturerModel, AbstractSerialNoModel):
-    """ОЗУ."""
+class RAMModel(AbstractManufacturerModel):
+    """Модели ОЗУ."""
 
     ram_type = models.ForeignKey(
         RAMType,
@@ -194,6 +194,25 @@ class RAM(AbstractManufacturerModel, AbstractSerialNoModel):
         verbose_name=_('memory capacity'),
         blank=True,
         null=True,
+    )
+
+    class Meta:
+        verbose_name = _('RAM model')
+        verbose_name_plural = _('RAM models')
+        default_related_name = 'ram_model'
+
+    def __str__(self):
+        """Производитель объем тип."""
+        return f'{self.manufacturer} {self.capacity} {self.ram_type}'
+
+
+class RAM(AbstractSerialNoModel):
+    """ОЗУ."""
+
+    ram_model = models.ForeignKey(
+        RAMModel,
+        on_delete=models.RESTRICT,
+        verbose_name=_('RAM model'),
     )
     computer = models.ForeignKey(
         to=Computer,
@@ -209,8 +228,8 @@ class RAM(AbstractManufacturerModel, AbstractSerialNoModel):
         default_related_name = 'ram'
 
     def __str__(self):
-        """Название, тип и объем."""
-        return f'{self.manufacturer} {self.capacity} {self.ram_type}'
+        """Модель серийный номер."""
+        return f'{self.ram_model} {self.serial_no}'
 
 
 class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):

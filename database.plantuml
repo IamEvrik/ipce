@@ -107,9 +107,7 @@ class "Объем памяти" as MemoryCapacity {
 class "ОЗУ" as RAM {
 	{field} *ram_id : int
 	..
-	{field} *manufacturer_id : int
-	{field} *ramtype_id : int
-	{field} capacity_id : int
+	{field} *rammodel_id : int
 	{field} *serial_no : str
 	{field} computer_id : int
 }
@@ -130,6 +128,14 @@ class "HDD" as HDD {
 	{field} computer_id : int
 }
 
+class "Модель ОЗУ" as RAMModel {
+	{field} *rammodel_id : int
+	..
+	{field} *manufacturer_id : int
+	{field} *ramtype_id : int
+	{field} capacity_id : int
+}
+
 
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
@@ -142,9 +148,10 @@ ComputerHistory --|> Computer
 Monitor o-- WorkPlace
 Monitor }-- Manufacturer
 UserName -- WorkPlace
-RAM }-- RAMType
-RAM }-- MemoryCapacity
-RAM }-- Manufacturer
+RAMModel }-- RAMType
+RAMModel }-- MemoryCapacity
+RAMModel }-- Manufacturer
+RAM }-- RAMModel
 RAM }-- Computer
 HDD }-- HDDType
 HDD }-- Computer	

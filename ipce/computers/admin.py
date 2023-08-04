@@ -67,16 +67,17 @@ class AdminMonitor(admin.ModelAdmin):
 
 
 
-@admin.register(mymodels.RAM, site=ipce_admin)
+@admin.register(mymodels.RAMModel, site=ipce_admin)
 class AdminRAM(admin.ModelAdmin):
     """Отображение ОЗУ в админке."""
 
-    fields = ('manufacturer', 'ram_type', 'capacity', 'serial_no', 'computer')
+    fields = ('manufacturer', 'ram_type', 'capacity')
 
 
 ipce_admin.register(mymodels.Manufacturer)
 ipce_admin.register(mymodels.MemoryCapacity)
 ipce_admin.register(mymodels.RAMType)
+ipce_admin.register(mymodels.RAM)
 ipce_admin.register(mymodels.Division)
 ipce_admin.register(mymodels.UserName)
 ipce_admin.register(mymodels.Responsible)
