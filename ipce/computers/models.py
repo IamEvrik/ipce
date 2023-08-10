@@ -119,67 +119,6 @@ class HDDType(models.Model):
         return f'{self.name}'
 
 
-class Computer(models.Model):
-    """Компьютер."""
-
-    class OsBitDepth(models.TextChoices):
-        """Разрядность ОС."""
-
-        X32 = 'x32'
-        X64 = 'x64'
-        __empty__ = _('Unknown')
-
-    inventory_number = models.CharField(
-        _('inventory number'),
-        max_length=10,
-        blank=True,
-    )
-    name = models.CharField(_('name'), max_length=20, blank=True)
-    responsible = models.ForeignKey(
-        Responsible,
-        verbose_name=_('responsible'),
-        on_delete=models.RESTRICT,
-    )
-    processor = models.CharField(_('processor'), max_length=100, blank=True)
-    os_key = models.ForeignKey(
-        softmodels.OSKey,
-        on_delete=models.SET_NULL,
-        verbose_name=_('OS key'),
-        blank=True,
-        null=True,
-    )
-    os_bit_depth = models.CharField(
-        verbose_name=_('OS bit depth'),
-        max_length=3,
-        choices=OsBitDepth.choices,
-        blank=True,
-    )
-    office_key = models.ForeignKey(
-        softmodels.OfficeKey,
-        on_delete=models.SET_NULL,
-        verbose_name=_('office key'),
-        blank=True,
-        null=True,
-    )
-    ip_address = models.GenericIPAddressField(
-        verbose_name=_('IP address'),
-        protocol='IPv4',
-        blank=True,
-        null=True,
-        unique=True,
-    )
-    note = models.TextField(_('note'), blank=True)
-
-    class Meta:
-        verbose_name = _('computer')
-        verbose_name_plural = _('computers')
-        default_related_name = 'computer'
-
-    def __str__(self):
-        """Название, инвентарный номер, IP-адрес."""
-        return f'{self.name}, {self.inventory_number}, {self.ip_address}'
-
-
 class HDDModel(AbstractManufacturerModel):
     """Модели жестких дисков."""
 
@@ -212,14 +151,6 @@ class HDD(AbstractSerialNoModel):
         to=HDDModel,
         on_delete=models.RESTRICT,
         verbose_name=_('HDD model'),
-    )
-
-    computer = models.ForeignKey(
-        to=Computer,
-        on_delete=models.RESTRICT,
-        verbose_name=_('computer'),
-        blank=True,
-        null=True
     )
 
     class Meta:
@@ -280,13 +211,6 @@ class RAM(AbstractSerialNoModel):
         on_delete=models.RESTRICT,
         verbose_name=_('RAM model'),
     )
-    computer = models.ForeignKey(
-        to=Computer,
-        on_delete=models.RESTRICT,
-        verbose_name=_('computer'),
-        blank=True,
-        null=True
-    )
 
     class Meta:
         verbose_name = _('RAM')
@@ -296,6 +220,123 @@ class RAM(AbstractSerialNoModel):
     def __str__(self):
         """Модель серийный номер."""
         return f'{self.ram_model} {self.serial_no}'
+
+
+class Computer(models.Model):
+    """Компьютер."""
+
+    class OsBitDepth(models.TextChoices):
+        """Разрядность ОС."""
+
+        X32 = 'x32'
+        X64 = 'x64'
+        __empty__ = _('Unknown')
+
+    inventory_number = models.CharField(
+        _('inventory number'),
+        max_length=10,
+        blank=True,
+    )
+    name = models.CharField(_('name'), max_length=20, blank=True)
+    responsible = models.ForeignKey(
+        Responsible,
+        verbose_name=_('responsible'),
+        on_delete=models.RESTRICT,
+    )
+    processor = models.CharField(_('processor'), max_length=100, blank=True)
+    hdd = models.ManyToManyField(
+        to=HDD,
+        through='ComputerHDD',
+        verbose_name=_('HDD'),
+    )
+    ram = models.ManyToManyField(
+        to=RAM,
+        through='ComputerRAM',
+        verbose_name=_('RAM'),
+    )
+    os_key = models.ForeignKey(
+        softmodels.OSKey,
+        on_delete=models.SET_NULL,
+        verbose_name=_('OS key'),
+        blank=True,
+        null=True,
+    )
+    os_bit_depth = models.CharField(
+        verbose_name=_('OS bit depth'),
+        max_length=3,
+        choices=OsBitDepth.choices,
+        blank=True,
+    )
+    office_key = models.ForeignKey(
+        softmodels.OfficeKey,
+        on_delete=models.SET_NULL,
+        verbose_name=_('office key'),
+        blank=True,
+        null=True,
+    )
+    ip_address = models.GenericIPAddressField(
+        verbose_name=_('IP address'),
+        protocol='IPv4',
+        blank=True,
+        null=True,
+        unique=True,
+    )
+    note = models.TextField(_('note'), blank=True)
+
+    class Meta:
+        verbose_name = _('computer')
+        verbose_name_plural = _('computers')
+        default_related_name = 'computer'
+
+    def __str__(self):
+        """Название, инвентарный номер, IP-адрес."""
+        return f'{self.name}, {self.inventory_number}, {self.ip_address}'
+
+
+class ComputerHDD(models.Model):
+    """Жесткие диски в компьютерах."""
+
+    computer = models.ForeignKey(
+        to=Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+    )
+    hdd = models.ForeignKey(
+        to=HDD,
+        on_delete=models.RESTRICT,
+        verbose_name=_('HDD'),
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('hdd',),
+                name='unique_hdd',
+            ),
+        )
+
+
+class ComputerRAM(models.Model):
+    """ОЗУ в компьютерах."""
+
+    computer = models.ForeignKey(
+        to=Computer,
+        on_delete=models.RESTRICT,
+        verbose_name=_('computer'),
+    )
+    ram = models.ForeignKey(
+        to=RAM,
+        on_delete=models.RESTRICT,
+        verbose_name=_('RAM'),
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('ram',),
+                name='unique_ram',
+            ),
+        )
 
 
 class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):

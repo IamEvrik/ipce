@@ -42,22 +42,6 @@ class AdminWorkPlace(admin.ModelAdmin):
         return obj.computer.ip_address
 
 
-class InlineComputerRAM(admin.TabularInline):
-    """Отображение памяти в компьютере."""
-
-    model = mymodels.RAM
-    extra = 1
-
-
-@admin.register(mymodels.Computer, site=ipce_admin)
-class AdminComputer(admin.ModelAdmin):
-    """Отображение компьютеров в админке."""
-
-    inlines = [
-        InlineComputerRAM
-    ]
-
-
 @admin.register(mymodels.Monitor, site=ipce_admin)
 class AdminMonitor(admin.ModelAdmin):
     """Отображение мониторов в админке."""
@@ -89,6 +73,7 @@ ipce_admin.register(mymodels.Responsible)
 ipce_admin.register(mymodels.WorkplaceComputerHistory)
 ipce_admin.register(mymodels.HDDType)
 ipce_admin.register(mymodels.HDD)
+ipce_admin.register(mymodels.Computer)
 
 
 @admin.register(softmodels.OfficeKey, site=ipce_admin)

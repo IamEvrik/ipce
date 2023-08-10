@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-04 09:42+0300\n"
+"POT-Creation-Date: 2023-08-10 13:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,194 +17,222 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\computers\admin.py:15
+#: .\computers\admin.py:14
 msgid "YPS admin"
 msgstr "Админ ЮПЗ"
 
-#: .\computers\admin.py:16
+#: .\computers\admin.py:15
 msgid "YPS admin portal"
 msgstr "Портал админа ЮЗП"
 
-#: .\computers\admin.py:17
+#: .\computers\admin.py:16
 msgid "Administration"
 msgstr "Администрирование"
 
-#: .\computers\admin.py:35 .\computers\models.py:169
+#: .\computers\admin.py:34 .\computers\flycheck_models.py:233
+#: .\computers\models.py:233
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: .\computers\admin.py:39 .\computers\models.py:204
+#: .\computers\admin.py:38 .\computers\flycheck_models.py:278
+#: .\computers\models.py:278
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\computers\apps.py:12 .\computers\models.py:214
+#: .\computers\apps.py:12 .\computers\flycheck_models.py:288
+#: .\computers\models.py:288
 msgid "computers"
 msgstr "компьютеры"
 
-#: .\computers\models.py:13
+#: .\computers\flycheck_models.py:13 .\computers\models.py:13
 msgid "serial number"
 msgstr "серийный номер"
 
-#: .\computers\models.py:24 .\computers\models.py:68 .\computers\models.py:98
-#: .\computers\models.py:176 .\computers\models.py:326
+#: .\computers\flycheck_models.py:24 .\computers\flycheck_models.py:68
+#: .\computers\flycheck_models.py:111 .\computers\flycheck_models.py:240
+#: .\computers\flycheck_models.py:367 .\computers\models.py:24
+#: .\computers\models.py:68 .\computers\models.py:111 .\computers\models.py:240
+#: .\computers\models.py:367
 msgid "name"
 msgstr "название"
 
-#: .\computers\models.py:27 .\computers\models.py:322
+#: .\computers\flycheck_models.py:27 .\computers\flycheck_models.py:363
+#: .\computers\models.py:27 .\computers\models.py:363
 msgid "division"
 msgstr "подразделение"
 
-#: .\computers\models.py:28
+#: .\computers\flycheck_models.py:28 .\computers\models.py:28
 msgid "divisions"
 msgstr "подразделения"
 
-#: .\computers\models.py:38 .\computers\models.py:43 .\computers\models.py:329
+#: .\computers\flycheck_models.py:38 .\computers\flycheck_models.py:43
+#: .\computers\flycheck_models.py:370 .\computers\models.py:38
+#: .\computers\models.py:43 .\computers\models.py:370
 msgid "username"
 msgstr "имя пользователя"
 
+#: .\computers\flycheck_models.py:39 .\computers\flycheck_models.py:54
 #: .\computers\models.py:39 .\computers\models.py:54
 msgid "FIO"
 msgstr "ФИО"
 
-#: .\computers\models.py:40
+#: .\computers\flycheck_models.py:40 .\computers\models.py:40
 msgid "password"
 msgstr "пароль"
 
-#: .\computers\models.py:44
+#: .\computers\flycheck_models.py:44 .\computers\models.py:44
 msgid "usernames"
 msgstr "имена пользователей"
 
-#: .\computers\models.py:57 .\computers\models.py:179
+#: .\computers\flycheck_models.py:57 .\computers\flycheck_models.py:243
+#: .\computers\models.py:57 .\computers\models.py:243
 msgid "responsible"
 msgstr "ответственное лицо"
 
-#: .\computers\models.py:58
+#: .\computers\flycheck_models.py:58 .\computers\models.py:58
 msgid "responsibles"
 msgstr "ответственные лица"
 
+#: .\computers\flycheck_models.py:71 .\computers\flycheck_models.py:86
 #: .\computers\models.py:71 .\computers\models.py:86
 msgid "manufacturer"
 msgstr "производитель"
 
-#: .\computers\models.py:72
+#: .\computers\flycheck_models.py:72 .\computers\models.py:72
 msgid "manufacturers"
 msgstr "производители"
 
-#: .\computers\models.py:101 .\computers\models.py:116
-msgid "hdd type"
-msgstr "вид жесткого диска"
-
-#: .\computers\models.py:102
-msgid "hdd types"
-msgstr "виды жестких дисков"
-
-#: .\computers\models.py:112 .\computers\models.py:306
-msgid "model"
-msgstr "модель"
-
-#: .\computers\models.py:126 .\computers\models.py:140
-msgid "HDD model"
-msgstr "модель HDD"
-
-#: .\computers\models.py:127
-msgid "HDD models"
-msgstr "модели HDD"
-
-#: .\computers\models.py:146 .\computers\models.py:213
-#: .\computers\models.py:288 .\computers\models.py:337
-#: .\computers\models.py:368
-msgid "computer"
-msgstr "компьютер"
-
-#: .\computers\models.py:152
-msgid "HDD"
-msgstr "Жесткий диск"
-
-#: .\computers\models.py:153
-msgid "HDDs"
-msgstr "Жесткие диски"
-
-#: .\computers\models.py:172
-msgid "inventory number"
-msgstr "инвентарный номер"
-
-#: .\computers\models.py:182
-msgid "processor"
-msgstr "процессор"
-
-#: .\computers\models.py:186
-msgid "OS key"
-msgstr "ключ ОС"
-
-#: .\computers\models.py:191
-msgid "OS bit depth"
-msgstr "разрядность ОС"
-
-#: .\computers\models.py:199
-msgid "office key"
-msgstr "ключ офиса"
-
-#: .\computers\models.py:210 .\computers\models.py:344
-msgid "note"
-msgstr "примечание"
-
-#: .\computers\models.py:225 .\computers\models.py:228
-#: .\computers\models.py:257
-msgid "RAM type"
-msgstr "тип оперативной памяти"
-
-#: .\computers\models.py:229
-msgid "RAM types"
-msgstr "типы оперативной памяти"
-
-#: .\computers\models.py:239
+#: .\computers\flycheck_models.py:96 .\computers\models.py:96
 msgid "capacity"
 msgstr "объем памяти"
 
-#: .\computers\models.py:242 .\computers\models.py:262
+#: .\computers\flycheck_models.py:99 .\computers\flycheck_models.py:191
+#: .\computers\models.py:99 .\computers\models.py:191
 msgid "memory capacity"
 msgstr "объем памяти"
 
-#: .\computers\models.py:243
+#: .\computers\flycheck_models.py:100 .\computers\models.py:100
 msgid "memory capacities"
 msgstr "объемы памяти"
 
-#: .\computers\models.py:268 .\computers\models.py:283
+#: .\computers\flycheck_models.py:114 .\computers\flycheck_models.py:129
+#: .\computers\models.py:114 .\computers\models.py:129
+msgid "hdd type"
+msgstr "вид жесткого диска"
+
+#: .\computers\flycheck_models.py:115 .\computers\models.py:115
+msgid "hdd types"
+msgstr "виды жестких дисков"
+
+#: .\computers\flycheck_models.py:125 .\computers\flycheck_models.py:345
+#: .\computers\models.py:125 .\computers\models.py:345
+msgid "model"
+msgstr "модель"
+
+#: .\computers\flycheck_models.py:139 .\computers\flycheck_models.py:153
+#: .\computers\models.py:139 .\computers\models.py:153
+msgid "HDD model"
+msgstr "модель HDD"
+
+#: .\computers\flycheck_models.py:140 .\computers\models.py:140
+msgid "HDD models"
+msgstr "модели HDD"
+
+#: .\computers\flycheck_models.py:157 .\computers\flycheck_models.py:250
+#: .\computers\flycheck_models.py:307 .\computers\models.py:157
+#: .\computers\models.py:250 .\computers\models.py:307
+msgid "HDD"
+msgstr "Жесткий диск"
+
+#: .\computers\flycheck_models.py:158 .\computers\models.py:158
+msgid "HDDs"
+msgstr "Жесткие диски"
+
+#: .\computers\flycheck_models.py:169 .\computers\flycheck_models.py:172
+#: .\computers\flycheck_models.py:186 .\computers\models.py:169
+#: .\computers\models.py:172 .\computers\models.py:186
+msgid "RAM type"
+msgstr "тип оперативной памяти"
+
+#: .\computers\flycheck_models.py:173 .\computers\models.py:173
+msgid "RAM types"
+msgstr "типы оперативной памяти"
+
+#: .\computers\flycheck_models.py:197 .\computers\flycheck_models.py:212
+#: .\computers\models.py:197 .\computers\models.py:212
 msgid "RAM model"
 msgstr "модель ОЗУ"
 
-#: .\computers\models.py:269
+#: .\computers\flycheck_models.py:198 .\computers\models.py:198
 msgid "RAM models"
 msgstr "модели ОЗУ"
 
-#: .\computers\models.py:294 .\computers\models.py:295
+#: .\computers\flycheck_models.py:216 .\computers\flycheck_models.py:217
+#: .\computers\flycheck_models.py:255 .\computers\flycheck_models.py:330
+#: .\computers\models.py:216 .\computers\models.py:217
+#: .\computers\models.py:255 .\computers\models.py:330
 msgid "RAM"
 msgstr "ОЗУ"
 
-#: .\computers\models.py:309 .\computers\models.py:342
+#: .\computers\flycheck_models.py:236 .\computers\models.py:236
+msgid "inventory number"
+msgstr "инвентарный номер"
+
+#: .\computers\flycheck_models.py:246 .\computers\models.py:246
+msgid "processor"
+msgstr "процессор"
+
+#: .\computers\flycheck_models.py:260 .\computers\models.py:260
+msgid "OS key"
+msgstr "ключ ОС"
+
+#: .\computers\flycheck_models.py:265 .\computers\models.py:265
+msgid "OS bit depth"
+msgstr "разрядность ОС"
+
+#: .\computers\flycheck_models.py:273 .\computers\models.py:273
+msgid "office key"
+msgstr "ключ офиса"
+
+#: .\computers\flycheck_models.py:284 .\computers\flycheck_models.py:385
+#: .\computers\models.py:284 .\computers\models.py:385
+msgid "note"
+msgstr "примечание"
+
+#: .\computers\flycheck_models.py:287 .\computers\flycheck_models.py:302
+#: .\computers\flycheck_models.py:325 .\computers\flycheck_models.py:378
+#: .\computers\flycheck_models.py:409 .\computers\models.py:287
+#: .\computers\models.py:302 .\computers\models.py:325
+#: .\computers\models.py:378 .\computers\models.py:409
+msgid "computer"
+msgstr "компьютер"
+
+#: .\computers\flycheck_models.py:348 .\computers\flycheck_models.py:383
+#: .\computers\models.py:348 .\computers\models.py:383
 msgid "monitor"
 msgstr "монитор"
 
-#: .\computers\models.py:310
+#: .\computers\flycheck_models.py:349 .\computers\models.py:349
 msgid "monitors"
 msgstr "мониторы"
 
-#: .\computers\models.py:347 .\computers\models.py:362
+#: .\computers\flycheck_models.py:388 .\computers\flycheck_models.py:403
+#: .\computers\models.py:388 .\computers\models.py:403
 msgid "work place"
 msgstr "рабочее место"
 
-#: .\computers\models.py:348
+#: .\computers\flycheck_models.py:389 .\computers\models.py:389
 msgid "work places"
 msgstr "рабочие места"
 
-#: .\computers\models.py:371
+#: .\computers\flycheck_models.py:412 .\computers\models.py:412
 msgid "install date"
 msgstr "дата установки"
 
-#: .\computers\models.py:374
+#: .\computers\flycheck_models.py:415 .\computers\models.py:415
 msgid "Workplace computers"
 msgstr "компьютеры рабочего места"
 
-#: .\computers\models.py:375
+#: .\computers\flycheck_models.py:416 .\computers\models.py:416
 msgid "workplaces computers"
 msgstr "компьютеры рабочих мест"

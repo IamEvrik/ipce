@@ -52,6 +52,8 @@ class "Компьютер" as Computer {
 	{field} *name : str
 	{field} *responsible_id : int
 	{field} *proccessor : str
+	{field} *hdd_id : int
+	{field} *ram_id : int
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
 	{field} office_key_id : int
@@ -107,7 +109,6 @@ class "ОЗУ" as RAM {
 	..
 	{field} *rammodel_id : int
 	{field} *serial_no : str
-	{field} computer_id : int
 }
 
 class "Класс HDD" as HDDType {
@@ -121,7 +122,6 @@ class "HDD" as HDD {
 	..
 	{field} *hddmodel_id : int
 	{field} *serial_no : str
-	{field} computer_id : int
 }
 
 class "Модель ОЗУ" as RAMModel {
