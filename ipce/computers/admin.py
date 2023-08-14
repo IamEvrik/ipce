@@ -80,7 +80,11 @@ ipce_admin.register(mymodels.Computer)
 class AdminOfficeKey(admin.ModelAdmin):
     """Отображение ключей офиса в админке."""
 
-    fields = ('office_version', 'key_text', 'note')
+    fields = (('office_version', 'key_text'), 'note')
+    list_display = ('office_version', 'key_text')
+    list_filter = ('office_version',)
+    search_fields = ('key_text',)
+    search_help_text = 'Find key'
 
 
 @admin.register(softmodels.OSKey, site=ipce_admin)

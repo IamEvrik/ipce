@@ -47,6 +47,7 @@ class OfficeKey(AbstractKeyModel):
     class Meta:
         verbose_name = _('office key')
         verbose_name_plural = _('office keys')
+        ordering = ('office_version', 'key_text')
         constraints = (
             models.UniqueConstraint(
                 fields=('office_version', 'key_text'),
@@ -85,6 +86,7 @@ class OSKey(AbstractKeyModel):
     class Meta:
         verbose_name = _('OS key')
         verbose_name_plural = _('OS keys')
+        ordering = ('os_version', 'key_text')
         constraints = (
             models.UniqueConstraint(
                 fields=('os_version', 'key_text'),
