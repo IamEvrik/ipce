@@ -24,16 +24,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Процедура загрузки."""
-
         with transaction.atomic():
-            for filename, current_class in Command.FILES_CLASSES_MAPPING.items():
+            for filename, classname in Command.FILES_CLASSES_MAPPING.items():
                 fullname = Command.DATA_DIR / filename
                 if not fullname.exists():
                     raise CommandError(f'File {filename} does not exists.')
 
-                with open(fullname, mode='r', encoding='utf8') as f:
-                    csv_file = csv.DictReader(f)
-                    for row in csv_file:
-                        current_class.objects.get_or_create(**row)
+                with open(fullname, mode='r', encoding='utf8') as csv_file:
+                    csv_dict = csv.DictReader(csv_file)
+                    for element in csv_dict:
+                        classname.objects.get_or_create(**element)
                 self.stdout.write(f'File {filename} processed.\n')
-            

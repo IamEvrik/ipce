@@ -46,11 +46,11 @@ class AdminWorkPlace(admin.ModelAdmin):
 class AdminMonitor(admin.ModelAdmin):
     """Отображение мониторов в админке."""
 
-    fields = ('manufacturer', 'name', 'serial_no')
+    fields = ('model', 'serial_no')
 
 
 @admin.register(mymodels.RAMModel, site=ipce_admin)
-class AdminRAM(admin.ModelAdmin):
+class AdminRAMModel(admin.ModelAdmin):
     """Отображение ОЗУ в админке."""
 
     fields = ('manufacturer', 'ram_type', 'capacity')
@@ -67,6 +67,7 @@ ipce_admin.register(mymodels.Manufacturer)
 ipce_admin.register(mymodels.MemoryCapacity)
 ipce_admin.register(mymodels.RAMType)
 ipce_admin.register(mymodels.RAM)
+ipce_admin.register(mymodels.MonitorModel)
 ipce_admin.register(mymodels.Division)
 ipce_admin.register(mymodels.UserName)
 ipce_admin.register(mymodels.Responsible)
@@ -74,7 +75,8 @@ ipce_admin.register(mymodels.WorkplaceComputerHistory)
 ipce_admin.register(mymodels.HDDType)
 ipce_admin.register(mymodels.HDD)
 ipce_admin.register(mymodels.Computer)
-
+ipce_admin.register(mymodels.MotherboardModel)
+ipce_admin.register(mymodels.Motherboard)
 
 @admin.register(softmodels.OfficeKey, site=ipce_admin)
 class AdminOfficeKey(admin.ModelAdmin):

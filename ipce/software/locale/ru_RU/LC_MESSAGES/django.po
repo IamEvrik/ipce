@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-03 10:16+0300\n"
+"POT-Creation-Date: 2023-08-14 15:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr "ключ"
 msgid "note"
 msgstr "примечание"
 
-#: .\software\models.py:26 .\software\models.py:65
+#: .\software\models.py:26 .\software\models.py:66
 msgid "name"
 msgstr "название"
 
@@ -49,19 +49,19 @@ msgstr "ключ офиса"
 msgid "office keys"
 msgstr "ключи офиса"
 
-#: .\software\models.py:68 .\software\models.py:82
+#: .\software\models.py:69 .\software\models.py:83
 msgid "OS version"
 msgstr "версия ОС"
 
-#: .\software\models.py:69
+#: .\software\models.py:70
 msgid "OS versions"
 msgstr "версии ОС"
 
-#: .\software\models.py:86
+#: .\software\models.py:87
 msgid "OS key"
 msgstr "ключ ОС"
 
-#: .\software\models.py:87
+#: .\software\models.py:88
 msgid "OS keys"
 msgstr "ключи ОС"
 

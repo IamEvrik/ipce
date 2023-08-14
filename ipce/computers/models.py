@@ -140,8 +140,9 @@ class HDDModel(AbstractManufacturerModel):
         verbose_name_plural = _('HDD models')
 
     def __str__(self):
-        """Производитель, тип, объем."""
-        return f'{self.manufacturer} {self.hdd_type} {self.capacity}'
+        """Производитель, модель, тип, объем."""
+        return (f'{self.manufacturer} {self.model} {self.hdd_type}'
+                ' {self.capacity}')
 
 
 class HDD(AbstractSerialNoModel):
@@ -222,6 +223,39 @@ class RAM(AbstractSerialNoModel):
         return f'{self.ram_model} {self.serial_no}'
 
 
+class MotherboardModel(AbstractManufacturerModel):
+    """Модели материнских плат."""
+
+    model = models.CharField(_('model'), max_length=255)
+
+    class Meta:
+        verbose_name = _('motherboard model')
+        verbose_name_plural = _('motherboard models')
+        ordering = ('manufacturer', 'model')
+
+    def __str__(self):
+        """Производитель модель."""
+        return f'{self.manufacturer} {self.model}'
+
+
+class Motherboard(AbstractSerialNoModel):
+    """Материнские платы."""
+
+    model = models.ForeignKey(
+        to=MotherboardModel,
+        on_delete=models.RESTRICT,
+        verbose_name=_('model'),
+    )
+
+    class Meta:
+        verbose_name = _('motherboard')
+        verbose_name_plural = _('motherboards')
+
+    def __str__(self):
+        """Модель, серийник."""
+        return f'{self.model} {self.serial_no}'
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -244,6 +278,13 @@ class Computer(models.Model):
         on_delete=models.RESTRICT,
     )
     processor = models.CharField(_('processor'), max_length=100, blank=True)
+    motherboard = models.ForeignKey(
+        to=Motherboard,
+        on_delete=models.SET_NULL,
+        verbose_name=_('motherboard'),
+        blank=True,
+        null=True,
+    )
     hdd = models.ManyToManyField(
         to=HDD,
         through='ComputerHDD',
@@ -308,6 +349,8 @@ class ComputerHDD(models.Model):
     )
 
     class Meta:
+        verbose_name = _('computer hdd')
+        verbose_name_plural = _('computers hdd')
         constraints = (
             models.UniqueConstraint(
                 fields=('hdd',),
@@ -331,6 +374,8 @@ class ComputerRAM(models.Model):
     )
 
     class Meta:
+        verbose_name = _('computer RAM')
+        verbose_name_plural = _('computers RAM')
         constraints = (
             models.UniqueConstraint(
                 fields=('ram',),
@@ -339,10 +384,28 @@ class ComputerRAM(models.Model):
         )
 
 
-class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):
+class MonitorModel(AbstractManufacturerModel):
+    """Модель монитора."""
+
+    model = models.CharField(_('model'), max_length=255)
+
+    class Meta:
+        verbose_name = _('monitor model')
+        verbose_name_plural = _('monitor models')
+
+    def __str__(self):
+        """Модель."""
+        return f'{self.model}'
+
+
+class Monitor(AbstractSerialNoModel):
     """Монитор."""
 
-    name = models.CharField(_('model'), max_length=255)
+    model = models.ForeignKey(
+        to=MonitorModel,
+        on_delete=models.RESTRICT,
+        verbose_name=_('model'),
+    )
 
     class Meta:
         verbose_name = _('monitor')
@@ -351,7 +414,7 @@ class Monitor(AbstractManufacturerModel, AbstractSerialNoModel):
 
     def __str__(self):
         """Название и серийный номер."""
-        return f'{self.name}: {self.serial_no}'
+        return f'{self.model}: {self.serial_no}'
 
 
 class WorkPlace(models.Model):
