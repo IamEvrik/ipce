@@ -77,14 +77,15 @@ class Manufacturer(models.Model):
         return f'{self.name}'
 
 
-class AbstractManufacturerModel(models.Model):
-    """Абстрактный класс для комплектующих."""
+class AbstractAccessoryModel(models.Model):
+    """Абстрактный класс модели комплектующего."""
 
     manufacturer = models.ForeignKey(
         Manufacturer,
         on_delete=models.RESTRICT,
         verbose_name=_('manufacturer'),
     )
+    model = models.CharField(_('model'), max_length=255)
 
     class Meta:
         abstract = True
@@ -119,10 +120,9 @@ class HDDType(models.Model):
         return f'{self.name}'
 
 
-class HDDModel(AbstractManufacturerModel):
+class HDDModel(AbstractAccessoryModel):
     """Модели жестких дисков."""
 
-    model = models.CharField(_('model'), max_length=100)
     hdd_type = models.ForeignKey(
         to=HDDType,
         on_delete=models.RESTRICT,
@@ -178,7 +178,7 @@ class RAMType(models.Model):
         return f'{self.name}'
 
 
-class RAMModel(AbstractManufacturerModel):
+class RAMModel(AbstractAccessoryModel):
     """Модели ОЗУ."""
 
     ram_type = models.ForeignKey(
@@ -223,10 +223,8 @@ class RAM(AbstractSerialNoModel):
         return f'{self.ram_model} {self.serial_no}'
 
 
-class MotherboardModel(AbstractManufacturerModel):
+class MotherboardModel(AbstractAccessoryModel):
     """Модели материнских плат."""
-
-    model = models.CharField(_('model'), max_length=255)
 
     class Meta:
         verbose_name = _('motherboard model')
@@ -384,10 +382,8 @@ class ComputerRAM(models.Model):
         )
 
 
-class MonitorModel(AbstractManufacturerModel):
+class MonitorModel(AbstractAccessoryModel):
     """Модель монитора."""
-
-    model = models.CharField(_('model'), max_length=255)
 
     class Meta:
         verbose_name = _('monitor model')

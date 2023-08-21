@@ -93,6 +93,13 @@ class "Производитель" as Manufacturer {
 	{field} *name : str
 }
 
+abstract class "Модель комплектующего" as AbstractAccessoryModel {
+	{field} *model_id : int
+	..
+	{field} *manufacturer_id : int
+	{field} *model : str
+}
+
 class "Тип ОЗУ" as RAMType {
 	{field} *ramtype_id : int
 	..
@@ -128,7 +135,6 @@ class "HDD" as HDD {
 class "Модель ОЗУ" as RAMModel {
 	{field} *rammodel_id : int
 	..
-	{field} *manufacturer_id : int
 	{field} *ramtype_id : int
 	{field} capacity_id : int
 }
@@ -137,23 +143,17 @@ class "Модель HDD" as HDDModel {
 	{field} *hddmodel_id : int
 	..
 	{field} *hddtype_id : int
-	{field} *manufacturer_id : int
-	{field} *model : str
 	{field} *capacity_id : int	
 }
 
 class "Модель монитора" as MonitorModel {
 	{field} *monitormodel_id : int
 	..
-	{field} *manufacturer_id : int
-	{field} *model : str	
 }		
 
 class "Модель материнки" as MotherboardModel {
 	{field} *motherboardmodel_id : int
 	..
-	{field} *manufacturer_id : int
-	{field} *model : str
 }
 
 class "Материнка" as Motherboard {
@@ -163,6 +163,7 @@ class "Материнка" as Motherboard {
 	{field} serial_no : str
 }
 
+
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
 WorkPlace }-- Division	
@@ -171,22 +172,23 @@ Computer -- OfficeKey
 Computer o-- WorkPlace	
 Computer }-- Responsible
 ComputerHistory --|> Computer
+AbstractAccessoryModel }-- Manufacturer
+MonitorModel --|> AbstractAccessoryModel		
 Monitor o-- WorkPlace
 Monitor }-- MonitorModel
-MonitorModel }-- Manufacturer		
 UserName -- WorkPlace
 RAMModel }-- RAMType
 RAMModel }-- MemoryCapacity
-RAMModel }-- Manufacturer
+RAMModel --|> AbstractAccessoryModel
 RAM }-- RAMModel
 RAM }-- Computer
 HDDModel }-- HDDType
 HDD }-- Computer	
-HDDModel }-- Manufacturer
+HDDModel --|> AbstractAccessoryModel
 HDDModel }-- MemoryCapacity
 HDD }-- HDDModel	
-MotherboardModel --{ Motherboard
-MotherboardModel }-- Manufacturer
+MotherboardModel --|> AbstractAccessoryModel
+Motherboard }-- MotherboardModel
 Motherboard -- Computer		
 
 @enduml

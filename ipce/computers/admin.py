@@ -78,6 +78,7 @@ ipce_admin.register(mymodels.Computer)
 ipce_admin.register(mymodels.MotherboardModel)
 ipce_admin.register(mymodels.Motherboard)
 
+
 @admin.register(softmodels.OfficeKey, site=ipce_admin)
 class AdminOfficeKey(admin.ModelAdmin):
     """Отображение ключей офиса в админке."""
