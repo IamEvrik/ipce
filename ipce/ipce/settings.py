@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'software.apps.SoftwareConfig',
     'computers.apps.ComputersConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
