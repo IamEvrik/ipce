@@ -63,6 +63,20 @@ class AdminHDDModel(admin.ModelAdmin):
     fields = ('manufacturer', 'hdd_type', 'model', 'capacity')
 
 
+class ComputerRAMInline(admin.TabularInline):
+    """Память в компьютере."""
+
+    model = mymodels.ComputerRAM
+    extra = 1
+
+
+@admin.register(mymodels.Computer, site=ipce_admin)
+class AdminComputer(admin.ModelAdmin):
+    """Компьютеры."""
+
+    inlines = (ComputerRAMInline,)
+
+
 ipce_admin.register(mymodels.Manufacturer)
 ipce_admin.register(mymodels.MemoryCapacity)
 ipce_admin.register(mymodels.RAMType)
@@ -74,9 +88,10 @@ ipce_admin.register(mymodels.Responsible)
 ipce_admin.register(mymodels.WorkplaceComputerHistory)
 ipce_admin.register(mymodels.HDDType)
 ipce_admin.register(mymodels.HDD)
-ipce_admin.register(mymodels.Computer)
 ipce_admin.register(mymodels.MotherboardModel)
 ipce_admin.register(mymodels.Motherboard)
+ipce_admin.register(mymodels.VideoCardModel)
+ipce_admin.register(mymodels.VideoCard)
 
 
 @admin.register(softmodels.OfficeKey, site=ipce_admin)

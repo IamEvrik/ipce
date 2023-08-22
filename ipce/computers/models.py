@@ -133,6 +133,7 @@ class HDDModel(AbstractAccessoryModel):
     capacity = models.ForeignKey(
         to=MemoryCapacity,
         on_delete=models.RESTRICT,
+        verbose_name=_('capacity'),
     )
 
     class Meta:
@@ -142,7 +143,7 @@ class HDDModel(AbstractAccessoryModel):
     def __str__(self):
         """Производитель, модель, тип, объем."""
         return (f'{self.manufacturer} {self.model} {self.hdd_type}'
-                ' {self.capacity}')
+                f' {self.capacity}')
 
 
 class HDD(AbstractSerialNoModel):
@@ -254,6 +255,37 @@ class Motherboard(AbstractSerialNoModel):
         return f'{self.model} {self.serial_no}'
 
 
+class VideoCardModel(AbstractAccessoryModel):
+    """Модель видеокарты."""
+
+    class Meta:
+        verbose_name = _('video card model')
+        verbose_name_plural = _('video card models')
+
+    def __str__(self):
+        """Производитель и модель."""
+        return f'{self.manufacturer} {self.model}'
+
+
+class VideoCard(AbstractSerialNoModel):
+    """Видеокарта."""
+
+    model = models.ForeignKey(
+        to=VideoCardModel,
+        on_delete=models.RESTRICT,
+        related_name='cards',
+        verbose_name=_('model')
+    )
+
+    class Meta:
+        verbose_name = _('video card')
+        verbose_name_plural = _('video cards')
+
+    def __str__(self):
+        """Модель, серийный номер."""
+        return f'{self.model} {self.serial_no}'
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -292,6 +324,13 @@ class Computer(models.Model):
         to=RAM,
         through='ComputerRAM',
         verbose_name=_('RAM'),
+    )
+    videocard = models.ForeignKey(
+        to=VideoCard,
+        on_delete=models.RESTRICT,
+        verbose_name=_('video card'),
+        blank=True,
+        null=True,
     )
     os_key = models.ForeignKey(
         softmodels.OSKey,

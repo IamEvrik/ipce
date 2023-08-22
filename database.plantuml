@@ -112,10 +112,15 @@ class "Объем памяти" as MemoryCapacity {
 	{field} *capacity : str	
 }
 
+class "Модель ОЗУ" as RAMModel {
+	{field} *ramtype_id : int
+	{field} capacity_id : int
+}
+
 class "ОЗУ" as RAM {
 	{field} *ram_id : int
 	..
-	{field} *rammodel_id : int
+	{field} *model_id : int
 	{field} *serial_no : str
 }
 
@@ -125,44 +130,41 @@ class "Класс HDD" as HDDType {
 	{field} *name : str
 }
 
-class "HDD" as HDD {
-	{field} *hdd_id : int
-	..
-	{field} *hddmodel_id : int
-	{field} *serial_no : str
-}
-
-class "Модель ОЗУ" as RAMModel {
-	{field} *rammodel_id : int
-	..
-	{field} *ramtype_id : int
-	{field} capacity_id : int
-}
-
 class "Модель HDD" as HDDModel {
-	{field} *hddmodel_id : int
-	..
 	{field} *hddtype_id : int
 	{field} *capacity_id : int	
 }
 
-class "Модель монитора" as MonitorModel {
-	{field} *monitormodel_id : int
+class "HDD" as HDD {
+	{field} *hdd_id : int
 	..
+	{field} *model_id : int
+	{field} *serial_no : str
+}
+
+
+class "Модель монитора" as MonitorModel {
 }		
 
 class "Модель материнки" as MotherboardModel {
-	{field} *motherboardmodel_id : int
-	..
 }
 
 class "Материнка" as Motherboard {
 	{field} *motherboard_id : int
 	..
-	{field} *motherboardmodel_id : int
+	{field} *model_id : int
 	{field} serial_no : str
 }
 
+class "Модель видео карты" as VideocardModel {
+}
+
+class "Видеокарта" as Videocard {
+	{field} *videocard_id : int
+	..
+	{field} *model_id : int
+	{field} serial_no : str
+}
 
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
@@ -190,5 +192,8 @@ HDD }-- HDDModel
 MotherboardModel --|> AbstractAccessoryModel
 Motherboard }-- MotherboardModel
 Motherboard -- Computer		
+VideocardModel --|> AbstractAccessoryModel
+Videocard }-- VideocardModel
+Videocard o-- Computer		
 
 @enduml

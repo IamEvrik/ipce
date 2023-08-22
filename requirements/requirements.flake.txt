@@ -11,4 +11,5 @@ flake8-mypy
 flake8-pylint
 flake8-quotes
 flake8-todos
-django-stubs
+django-stubs[compatible-mypy]
+djangorestframework-stubs[compatible-mypy]
