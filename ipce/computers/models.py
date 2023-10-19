@@ -286,6 +286,37 @@ class VideoCard(AbstractSerialNoModel):
         return f'{self.model} {self.serial_no}'
 
 
+class ProcessorModel(AbstractAccessoryModel):
+    """Модель процессора."""
+
+    class Meta:
+        verbose_name = _('processor model')
+        verbose_name_plural = _('processor models')
+
+    def __str__(self):
+        """Производитель и модель."""
+        return f'{self.manufacturer} {self.model}'
+
+
+class Processor(AbstractSerialNoModel):
+    """Процессор."""
+
+    model = models.ForeignKey(
+        to=ProcessorModel,
+        on_delete=models.RESTRICT,
+        related_name='processors',
+        verbose_name=_('model')
+    )
+
+    class Meta:
+        verbose_name = _('processor')
+        verbose_name_plural = _('processors')
+
+    def __str__(self):
+        """Модель, серийный номер."""
+        return f'{self.model} {self.serial_no}'
+
+
 class Computer(models.Model):
     """Компьютер."""
 
@@ -307,7 +338,13 @@ class Computer(models.Model):
         verbose_name=_('responsible'),
         on_delete=models.RESTRICT,
     )
-    processor = models.CharField(_('processor'), max_length=100, blank=True)
+    processor = models.ForeignKey(
+        to=Processor,
+        on_delete=models.RESTRICT,
+        verbose_name=_('processor'),
+        blank=True,
+        null=True,
+    )
     motherboard = models.ForeignKey(
         to=Motherboard,
         on_delete=models.SET_NULL,

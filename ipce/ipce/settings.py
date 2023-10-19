@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django')
 
-DEBUG = bool(os.getenv('DEBUG', 'True'))
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOST', 'localhost').split(',')
 
@@ -26,8 +26,10 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'software.apps.SoftwareConfig',
     'computers.apps.ComputersConfig',
+    'worklog.apps.WorklogConfig',
     'rest_framework',
     'api.apps.ApiConfig',
+    'models_logging',
 ]
 
 MIDDLEWARE = [
@@ -105,3 +107,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGGING_MODELS = (
+    'software',
+)
+LOGGING_USER_MODEL = AUTH_USER_MODEL

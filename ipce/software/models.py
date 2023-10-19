@@ -1,5 +1,7 @@
 """Модели приложения software."""
 
+from typing import Iterable
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -28,6 +30,7 @@ class OfficeVersion(models.Model):
     class Meta:
         verbose_name = _('office version')
         verbose_name_plural = _('office versions')
+        ordering = ('name', )
 
     def __str__(self) -> str:
         """Строковое представление - название."""
@@ -68,6 +71,7 @@ class OSVersion(models.Model):
     class Meta:
         verbose_name = _('OS version')
         verbose_name_plural = _('OS versions')
+        ordering = ('name',)
 
     def __str__(self) -> str:
         """Название."""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 10:14+0300\n"
+"POT-Creation-Date: 2023-08-22 11:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,15 +29,15 @@ msgstr "Портал админа ЮЗП"
 msgid "Administration"
 msgstr "Администрирование"
 
-#: .\computers\admin.py:34 .\computers\models.py:296
+#: .\computers\admin.py:34 .\computers\models.py:328
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: .\computers\admin.py:38 .\computers\models.py:355
+#: .\computers\admin.py:38 .\computers\models.py:393
 msgid "IP address"
 msgstr "IP адрес"
 
-#: .\computers\apps.py:12 .\computers\models.py:365
+#: .\computers\apps.py:12 .\computers\models.py:403
 msgid "computers"
 msgstr "компьютеры"
 
@@ -46,11 +46,11 @@ msgid "serial number"
 msgstr "серийный номер"
 
 #: .\computers\models.py:24 .\computers\models.py:68 .\computers\models.py:112
-#: .\computers\models.py:303 .\computers\models.py:464
+#: .\computers\models.py:335 .\computers\models.py:502
 msgid "name"
 msgstr "название"
 
-#: .\computers\models.py:27 .\computers\models.py:460
+#: .\computers\models.py:27 .\computers\models.py:498
 msgid "division"
 msgstr "подразделение"
 
@@ -58,7 +58,7 @@ msgstr "подразделение"
 msgid "divisions"
 msgstr "подразделения"
 
-#: .\computers\models.py:38 .\computers\models.py:43 .\computers\models.py:467
+#: .\computers\models.py:38 .\computers\models.py:43 .\computers\models.py:505
 msgid "username"
 msgstr "имя пользователя"
 
@@ -74,7 +74,7 @@ msgstr "пароль"
 msgid "usernames"
 msgstr "имена пользователей"
 
-#: .\computers\models.py:57 .\computers\models.py:306
+#: .\computers\models.py:57 .\computers\models.py:338
 msgid "responsible"
 msgstr "ответственное лицо"
 
@@ -90,16 +90,16 @@ msgstr "производитель"
 msgid "manufacturers"
 msgstr "производители"
 
-#: .\computers\models.py:88 .\computers\models.py:245 .\computers\models.py:276
-#: .\computers\models.py:441
+#: .\computers\models.py:88 .\computers\models.py:246 .\computers\models.py:277
+#: .\computers\models.py:308 .\computers\models.py:479
 msgid "model"
 msgstr "модель"
 
-#: .\computers\models.py:97
+#: .\computers\models.py:97 .\computers\models.py:136
 msgid "capacity"
 msgstr "объем памяти"
 
-#: .\computers\models.py:100 .\computers\models.py:192
+#: .\computers\models.py:100 .\computers\models.py:193
 msgid "memory capacity"
 msgstr "объем памяти"
 
@@ -115,155 +115,167 @@ msgstr "вид жесткого диска"
 msgid "hdd types"
 msgstr "виды жестких дисков"
 
-#: .\computers\models.py:139 .\computers\models.py:154
+#: .\computers\models.py:140 .\computers\models.py:155
 msgid "HDD model"
 msgstr "модель HDD"
 
-#: .\computers\models.py:140
+#: .\computers\models.py:141
 msgid "HDD models"
 msgstr "модели HDD"
 
-#: .\computers\models.py:158 .\computers\models.py:320
-#: .\computers\models.py:384
+#: .\computers\models.py:159 .\computers\models.py:358
+#: .\computers\models.py:422
 msgid "HDD"
 msgstr "Жесткий диск"
 
-#: .\computers\models.py:159
+#: .\computers\models.py:160
 msgid "HDDs"
 msgstr "Жесткие диски"
 
-#: .\computers\models.py:170 .\computers\models.py:173
-#: .\computers\models.py:187
+#: .\computers\models.py:171 .\computers\models.py:174
+#: .\computers\models.py:188
 msgid "RAM type"
 msgstr "тип оперативной памяти"
 
-#: .\computers\models.py:174
+#: .\computers\models.py:175
 msgid "RAM types"
 msgstr "типы оперативной памяти"
 
-#: .\computers\models.py:198 .\computers\models.py:213
+#: .\computers\models.py:199 .\computers\models.py:214
 msgid "RAM model"
 msgstr "модель ОЗУ"
 
-#: .\computers\models.py:199
+#: .\computers\models.py:200
 msgid "RAM models"
 msgstr "модели ОЗУ"
 
-#: .\computers\models.py:217 .\computers\models.py:218
-#: .\computers\models.py:325 .\computers\models.py:409
+#: .\computers\models.py:218 .\computers\models.py:219
+#: .\computers\models.py:363 .\computers\models.py:447
 msgid "RAM"
 msgstr "ОЗУ"
 
-#: .\computers\models.py:230
+#: .\computers\models.py:231
 msgid "motherboard model"
 msgstr "модель материнской платы"
 
-#: .\computers\models.py:231
+#: .\computers\models.py:232
 msgid "motherboard models"
 msgstr "модели материнских плат"
 
-#: .\computers\models.py:249 .\computers\models.py:313
+#: .\computers\models.py:250 .\computers\models.py:351
 msgid "motherboard"
 msgstr "материнская плата"
 
-#: .\computers\models.py:250
+#: .\computers\models.py:251
 msgid "motherboards"
 msgstr "материнские платы"
 
-#: .\computers\models.py:261
+#: .\computers\models.py:262
 msgid "video card model"
 msgstr "модель видеокарты"
 
-#: .\computers\models.py:262
+#: .\computers\models.py:263
 msgid "video card models"
 msgstr "модели видеокарт"
 
-#: .\computers\models.py:280 .\computers\models.py:330
+#: .\computers\models.py:281 .\computers\models.py:368
 msgid "video card"
 msgstr "видеокарта"
 
-#: .\computers\models.py:281
+#: .\computers\models.py:282
 msgid "video cards"
 msgstr "видеокарты"
 
-#: .\computers\models.py:299
-msgid "inventory number"
-msgstr "инвентарный номер"
+#: .\computers\models.py:293
+msgid "processor model"
+msgstr "модель процессора"
 
-#: .\computers\models.py:309
+#: .\computers\models.py:294
+msgid "processor models"
+msgstr "модели процессора"
+
+#: .\computers\models.py:312 .\computers\models.py:344
 msgid "processor"
 msgstr "процессор"
 
-#: .\computers\models.py:337
+#: .\computers\models.py:313
+msgid "processors"
+msgstr "процессоры"
+
+#: .\computers\models.py:331
+msgid "inventory number"
+msgstr "инвентарный номер"
+
+#: .\computers\models.py:375
 msgid "OS key"
 msgstr "ключ ОС"
 
-#: .\computers\models.py:342
+#: .\computers\models.py:380
 msgid "OS bit depth"
 msgstr "разрядность ОС"
 
-#: .\computers\models.py:350
+#: .\computers\models.py:388
 msgid "office key"
 msgstr "ключ офиса"
 
-#: .\computers\models.py:361 .\computers\models.py:482
+#: .\computers\models.py:399 .\computers\models.py:520
 msgid "note"
 msgstr "примечание"
 
-#: .\computers\models.py:364 .\computers\models.py:379
-#: .\computers\models.py:404 .\computers\models.py:475
-#: .\computers\models.py:506
+#: .\computers\models.py:402 .\computers\models.py:417
+#: .\computers\models.py:442 .\computers\models.py:513
+#: .\computers\models.py:544
 msgid "computer"
 msgstr "компьютер"
 
-#: .\computers\models.py:388
+#: .\computers\models.py:426
 msgid "computer hdd"
 msgstr "HDD компьютера"
 
-#: .\computers\models.py:389
+#: .\computers\models.py:427
 msgid "computers hdd"
 msgstr "HDD компьютеров"
 
-#: .\computers\models.py:413
+#: .\computers\models.py:451
 msgid "computer RAM"
 msgstr "ОЗУ компьютера"
 
-#: .\computers\models.py:414
+#: .\computers\models.py:452
 msgid "computers RAM"
 msgstr "ОЗУ компьютеров"
 
-#: .\computers\models.py:427
+#: .\computers\models.py:465
 msgid "monitor model"
 msgstr "модель монитора"
 
-#: .\computers\models.py:428
+#: .\computers\models.py:466
 msgid "monitor models"
 msgstr "модели мониторов"
 
-#: .\computers\models.py:445 .\computers\models.py:480
+#: .\computers\models.py:483 .\computers\models.py:518
 msgid "monitor"
 msgstr "монитор"
 
-#: .\computers\models.py:446
+#: .\computers\models.py:484
 msgid "monitors"
 msgstr "мониторы"
 
-#: .\computers\models.py:485 .\computers\models.py:500
+#: .\computers\models.py:523 .\computers\models.py:538
 msgid "work place"
 msgstr "рабочее место"
 
-#: .\computers\models.py:486
+#: .\computers\models.py:524
 msgid "work places"
 msgstr "рабочие места"
 
-#: .\computers\models.py:509
+#: .\computers\models.py:547
 msgid "install date"
 msgstr "дата установки"
 
-#: .\computers\models.py:512
+#: .\computers\models.py:550
 msgid "Workplace computers"
 msgstr "компьютеры рабочего места"
 
-#: .\computers\models.py:513
+#: .\computers\models.py:551
 msgid "workplaces computers"
 msgstr "компьютеры рабочих мест"

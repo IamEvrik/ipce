@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-14 15:28+0300\n"
+"POT-Creation-Date: 2023-10-02 10:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,11 @@ msgstr "ключ"
 msgid "note"
 msgstr "примечание"
 
-#: .\software\models.py:26 .\software\models.py:66
+#: .\software\models.py:26 .\software\models.py:67
 msgid "name"
 msgstr "название"
 
-#: .\software\models.py:29 .\software\models.py:43
+#: .\software\models.py:29 .\software\models.py:44
 msgid "office version"
 msgstr "версия офиса"
 
@@ -41,27 +41,27 @@ msgstr "версия офиса"
 msgid "office versions"
 msgstr "версии офиса"
 
-#: .\software\models.py:48
+#: .\software\models.py:49
 msgid "office key"
 msgstr "ключ офиса"
 
-#: .\software\models.py:49
+#: .\software\models.py:50
 msgid "office keys"
 msgstr "ключи офиса"
 
-#: .\software\models.py:69 .\software\models.py:83
+#: .\software\models.py:70 .\software\models.py:85
 msgid "OS version"
 msgstr "версия ОС"
 
-#: .\software\models.py:70
+#: .\software\models.py:71
 msgid "OS versions"
 msgstr "версии ОС"
 
-#: .\software\models.py:87
+#: .\software\models.py:89
 msgid "OS key"
 msgstr "ключ ОС"
 
-#: .\software\models.py:88
+#: .\software\models.py:90
 msgid "OS keys"
 msgstr "ключи ОС"
 

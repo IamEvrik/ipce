@@ -51,10 +51,11 @@ class "Компьютер" as Computer {
 	{field} *inventory_number : str
 	{field} *name : str
 	{field} *responsible_id : int
-	{field} *proccessor : str
+	{field} *proccessor_id : int
 	{field} *hdd_id : int
 	{field} *ram_id : int
 	{field} *motherboard_id : int
+	{field} videocard_id : int
 	{field} *os_key_id : int
 	{field} *os_bit_depth : str
 	{field} office_key_id : int
@@ -166,6 +167,16 @@ class "Видеокарта" as Videocard {
 	{field} serial_no : str
 }
 
+class "Модель процессора" as ProcessorModel {
+}
+
+class "Процессор" as Processor {
+	{field} *processor_id : int
+	..
+	{field} *model_id : int
+	{field} serial_no : str
+}
+
 OfficeKey }-- OfficeVersion
 OSKey }-- OSVersion
 WorkPlace }-- Division	
@@ -195,5 +206,8 @@ Motherboard -- Computer
 VideocardModel --|> AbstractAccessoryModel
 Videocard }-- VideocardModel
 Videocard o-- Computer		
+ProcessorModel --|> AbstractAccessoryModel
+Processor }-- ProcessorModel
+Processor -- Computer
 
 @enduml
